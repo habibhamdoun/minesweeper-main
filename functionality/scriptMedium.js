@@ -94,7 +94,7 @@ function start(){
         count=0;
         let button =document.getElementById(i);  
             if(expMines.includes(parseInt(button.id))){
-                button.innerHTML='B';
+                // button.innerHTML='B';
                 count=10;
             }
             else{

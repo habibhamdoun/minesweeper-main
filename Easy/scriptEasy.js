@@ -96,7 +96,7 @@ for(let i=0;i<totalMines;i++){
         let button =document.getElementById(i);  
             if(expMines.includes(parseInt(button.id))){
                 count=10;
-                button.innerHTML="B";
+                // button.innerHTML="B";
             }
             else{
                 if(firstColumn.includes(parseInt(button.id))){
