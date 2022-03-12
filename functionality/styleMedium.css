@@ -1,0 +1,87 @@
+/* basic styles */
+*{
+    font-family: 'Comic Sans MS',sans-serif ;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: background-image 2s;
+    background-image: radial-gradient(circle, yellow, orange);
+}
+
+
+
+
+/* body styles */
+
+#mineField{
+    display: flex;
+    flex-wrap: wrap;
+}
+#container{
+    width: 32rem;
+    height: 36.075rem;
+    border: solid 5px black;
+}
+#scoreField{
+    border-bottom: solid 3px black;
+    height: 60px;
+    display: flex;
+}
+#score{
+    height:30%;
+    width:40%;
+    align-self: center;
+}
+#hint{
+    text-align: center;
+    margin-top: 0.3rem;
+    padding: 10px; 
+    margin-bottom: 0.3rem;
+
+}
+label{
+    background-color: white;
+    padding: 3%;
+    margin: 1%;
+    border: 1px solid black;
+}
+.mineButtons{
+    height:32px;
+    width: 32px;
+    /* border: solid 1px red; */
+    margin: 1px;
+    
+
+        
+}
+.pressedButtons{
+    background-Color:rgb(138, 132, 132);
+   }
+.flagged{
+    background-Color:rgb(138, 61, 61);
+}
+.safeButton{
+    height:32px;
+    width: 32px;
+    /* border: solid 1px red; */
+    margin: 1px;
+}
+.icon{
+    display: none;
+}
+@media screen and (min-width:300px) and (max-width:600px){
+    #container{
+        width: 23.5rem;
+        height: 27.5rem;
+    }
+    .mineButtons{
+        height: 23px;
+        width: 23px;
+    }
+} 

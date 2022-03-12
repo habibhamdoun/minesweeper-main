@@ -1,0 +1,77 @@
+/* basic styles */
+*{
+    font-family: 'Comic Sans MS',sans-serif ;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-image:radial-gradient(circle, lightblue, deepskyblue);
+    transition: 2s;
+}
+
+
+
+
+/* body styles */
+#mineField{
+    display: flex;
+    flex-wrap: wrap;
+}
+#container{
+    width:17rem;
+    height: 15.5rem;
+    border: solid 5px black;
+}
+#scoreField{
+    border-bottom: solid 3px black;
+    height: 2.5rem;
+    display: flex;
+}
+#score{
+    height:30%;
+    width:40%;
+    align-self: center;
+}
+label{
+    background-color: white;
+    padding: 3%;
+    margin: 1%;
+    border: 1px solid black;
+}
+.mineButtons{
+    height:32px;
+    width: 32px;
+    margin: 1px;
+}
+.pressedButtons{
+    background-Color:rgb(138, 132, 132);
+   }
+.flagged{
+    background-Color:rgb(138, 61, 61);
+}
+.safeButton{
+    height:32px;
+    width: 32px;
+    margin: 1px;
+}
+.icon{
+    display: none;
+}
+#hint{
+    text-align: center;
+    margin-top: 0.3rem;
+    
+    padding: 7px 10px 20px 10px; 
+    margin-bottom: 0.3rem;
+}
+label{
+    background-color: white;
+    padding: 3%;
+    margin: 1%;
+    border: 1px solid black;
+}
