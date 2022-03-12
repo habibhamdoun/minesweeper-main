@@ -101,8 +101,6 @@ function start(){
                 if(firstColumn.includes(parseInt(button.id))){
                     // if button from first row dont detect mine from last column last row
                     // check buttons nearby for mines and not check mines      
-                if( expMines.includes(parseInt(button.id)-16))
-                    count++
                 if( expMines.includes(parseInt(button.id)-14))
                     count++
                 if( expMines.includes(parseInt(button.id)-15))
@@ -111,8 +109,6 @@ function start(){
                     count++  
                 if( expMines.includes(parseInt(button.id)+16))
                     count++
-                if( expMines.includes(parseInt(button.id)+14))
-                    count++
                 if( expMines.includes(parseInt(button.id)+15))
                     count++
                     
@@ -120,14 +116,10 @@ function start(){
                 else if(lastColumn.includes(parseInt(button.id))){
                     if( expMines.includes(parseInt(button.id)-16))
                     count++
-                    if( expMines.includes(parseInt(button.id)-14))
-                    count++
                     if( expMines.includes(parseInt(button.id)-15))
                     count++
-                    // if(expMines.includes(parseInt(button.id)-1))
-                    //     count++  
-                    if( expMines.includes(parseInt(button.id)+16))
-                        count++
+                    if(expMines.includes(parseInt(button.id)-1))
+                        count++  
                     if( expMines.includes(parseInt(button.id)+14))
                         count++
                     if( expMines.includes(parseInt(button.id)+15))
@@ -205,17 +197,49 @@ function start(){
                     
                 }
                 else{
-                    button.innerHTML='e';
+                    button.innerHTML='';
                     if(button.classList.contains('flagged'))
                     button.classList.remove('flagged'); 
                     // if button not close to mines put empty space
                     button.classList.add('pressedButtons');
                     revealEmpty();
                     function revealEmpty(){
-                        if(expMines.includes(button.id)){
+                        if(firstColumn.includes(parseInt(button.id))){
+                            if(button.id-15>0){
+                                document.getElementById(button.id -15).click();
+                            }
+                            if(button.id-14>0){
+                                document.getElementById(button.id -14).click();
+                            }
+                            if(button.id+1<226){
+                                document.getElementById(button.id +1).click();
+                            }
+                            if(button.id+15<226){
+                                document.getElementById(button.id +15).click();
+                            }
+                            if(button.id+16<226){
+                                document.getElementById(button.id +16).click();
+                            }
+                        }
+                        else if(lastColumn.includes(parseInt(button.id))){
+                            if(button.id-1>0){
+                                document.getElementById(button.id -1).click();
+                            }
+                            if(button.id+15<226){
+                                document.getElementById(button.id +15).click();
+                            }
+                            if(button.id-15>0){
+                                document.getElementById(button.id -15).click();
+                            }
+                            if(button.id-16>0){
+                                document.getElementById(button.id -16).click();
+                            }
+                            if(button.id+14<226){
+                                document.getElementById(button.id +14).click();
+                            }
+                        }
+                        else{
 
-                            return;
-                        }else{
                             if(button.id+1<226){
                                 document.getElementById(button.id +1).click();
                             }
@@ -240,8 +264,9 @@ function start(){
                             if(button.id-14>0){
                                 document.getElementById(button.id -14).click();
                             }
-                            return; 
                         }
+                            return; 
+                        
                         }
                     }
             }

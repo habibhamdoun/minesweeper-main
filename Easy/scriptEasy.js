@@ -21,7 +21,7 @@ var expAudio=document.getElementById('expAudio');
 var flagAudio=document.getElementById('flagAudio');
 var flagRemoved=document.getElementById('flagRemoved');
 var winAudio=document.getElementById('winAudio');
-var totalHints=1;
+var totalHints=3;
 var hintCount=0;
 var bg1='radial-gradient(circle, yellow, orange)';
 var bg2='radial-gradient(circle, lightblue, deepskyblue)';
@@ -56,7 +56,7 @@ function start(){
             square.setAttribute('id',i); // add id to buttons with name  i
             buttons.push(square.id); // add buttons id to array names buttons
     }
-    for(let i=0;i<totalMines;i++){
+for(let i=0;i<totalMines;i++){
         let expMine= Math.floor(Math.random() * buttons.length);
         expMines.push(expMine);
         let randomNum=Math.floor(Math.random() * buttons.length)
@@ -106,13 +106,9 @@ function start(){
                     count++
                 if( expMines.includes(parseInt(button.id)-7))
                     count++
-                if( expMines.includes(parseInt(button.id)-9))
-                    count++
                 if(expMines.includes(parseInt(button.id)+1))
                     count++  
                 if( expMines.includes(parseInt(button.id)+8))
-                    count++
-                if( expMines.includes(parseInt(button.id)+7))
                     count++
                 if( expMines.includes(parseInt(button.id)+9))
                     count++
@@ -121,15 +117,11 @@ function start(){
                 else if(lastColumn.includes(parseInt(button.id))){
                     if( expMines.includes(parseInt(button.id)-8))
                         count++
-                    if( expMines.includes(parseInt(button.id)-7))
-                        count++
                     if( expMines.includes(parseInt(button.id)-9))
                         count++ 
                     if( expMines.includes(parseInt(button.id)+8))
                         count++
                     if( expMines.includes(parseInt(button.id)+7))
-                        count++
-                    if( expMines.includes(parseInt(button.id)+9))
                         count++
                     if(expMines.includes(parseInt(button.id)-1))
                     count++         
@@ -213,6 +205,44 @@ function start(){
                     button.classList.add('pressedButtons');
                     revealEmpty();
                     function revealEmpty(){
+                        if(firstColumn.includes(parseInt(button.id))){
+
+                            if(parseInt(button.id)+1<totalButtons){
+                                document.getElementById(parseInt(button.id )+1).click();
+                            }
+                            if(parseInt(button.id)+9<totalButtons){
+                                document.getElementById(parseInt(button.id )+9).click();
+                            }
+                            if(parseInt(button.id)+8<totalButtons){
+                                document.getElementById(parseInt(button.id) +8).click();
+                            }
+                            if(parseInt(button.id)-8>0){
+                                document.getElementById(parseInt(button.id )-8).click();
+                            }
+                            if(parseInt(button.id)-7>0){
+                                document.getElementById(parseInt(button.id) -7).click();
+                            }
+                        }
+                        else if(lastColumn.includes(parseInt(button.id))){
+
+                            if(parseInt(button.id)-9>0){
+                                document.getElementById(parseInt(button.id) -9).click();
+                            }
+                            if(parseInt(button.id)+8<totalButtons){
+                                document.getElementById(parseInt(button.id) +8).click();
+                            }
+                            if(parseInt(button.id)-8>0){
+                                document.getElementById(parseInt(button.id )-8).click();
+                            }
+                            if(parseInt(button.id)+7<totalButtons){
+                                document.getElementById(parseInt(button.id) +7).click();
+                            }
+                            if(parseInt(button.id)-1<totalButtons){
+                                document.getElementById(parseInt(button.id )-1).click();
+                            }
+                        }
+                        else{
+                            
                             if(parseInt(button.id)+1<totalButtons){
                                 document.getElementById(parseInt(button.id )+1).click();
                             }
@@ -237,6 +267,7 @@ function start(){
                             if(parseInt(button.id)-7>0){
                                 document.getElementById(parseInt(button.id) -7).click();
                             }
+                        }
                             return; 
                         }
                         

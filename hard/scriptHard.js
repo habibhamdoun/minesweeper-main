@@ -100,52 +100,44 @@ function start(){
                 if(firstColumn.includes(parseInt(button.id))){
                     // if button from first row dont detect mine from last column last row
                     // check buttons nearby for mines and not check mines      
-                if( expMines.includes(parseInt(button.id)-24))
+                if( expMines.includes(parseInt(button.id)-30))
                     count++
-                if( expMines.includes(parseInt(button.id)-22))
-                    count++
-                if( expMines.includes(parseInt(button.id)-23))
+                if( expMines.includes(parseInt(button.id)-29))
                     count++
                 if(expMines.includes(parseInt(button.id)+1))
                     count++  
-                if( expMines.includes(parseInt(button.id)+24))
+                if( expMines.includes(parseInt(button.id)+30))
                     count++
-                if( expMines.includes(parseInt(button.id)+22))
-                    count++
-                if( expMines.includes(parseInt(button.id)+23))
+                if( expMines.includes(parseInt(button.id)+31))
                     count++
                     
                 }
                 else if(lastColumn.includes(parseInt(button.id))){
-                    if( expMines.includes(parseInt(button.id)-24))
+                    if( expMines.includes(parseInt(button.id)-30))
                     count++
-                    if( expMines.includes(parseInt(button.id)-22))
+                    if( expMines.includes(parseInt(button.id)-31))
                     count++
-                    if( expMines.includes(parseInt(button.id)-23))
+                    if( expMines.includes(parseInt(button.id)-1))
                     count++
-                    // if(expMines.includes(parseInt(button.id)-1))
-                    //     count++  
-                    if( expMines.includes(parseInt(button.id)+24))
+                    if( expMines.includes(parseInt(button.id)+29))
                         count++
-                    if( expMines.includes(parseInt(button.id)+22))
-                        count++
-                    if( expMines.includes(parseInt(button.id)+23))
+                    if( expMines.includes(parseInt(button.id)+30))
                         count++
                 }
                 else{
-                    if( expMines.includes(parseInt(button.id)-24))
+                    if( expMines.includes(parseInt(button.id)-31))
                     count++
-                    if( expMines.includes(parseInt(button.id)-22))
+                    if( expMines.includes(parseInt(button.id)-30))
                     count++
-                    if( expMines.includes(parseInt(button.id)-23))
+                    if( expMines.includes(parseInt(button.id)-29))
                     count++
                     if(expMines.includes(parseInt(button.id)+1))
                         count++  
-                    if( expMines.includes(parseInt(button.id)+24))
+                    if( expMines.includes(parseInt(button.id)+31))
                         count++
-                    if( expMines.includes(parseInt(button.id)+22))
+                    if( expMines.includes(parseInt(button.id)+30))
                         count++
-                    if( expMines.includes(parseInt(button.id)+23))
+                    if( expMines.includes(parseInt(button.id)+29))
                         count++
                     if( expMines.includes(parseInt(button.id)-1))
                             count++
@@ -211,36 +203,69 @@ function start(){
                     button.classList.add('pressedButtons');
                     revealEmpty();
                     function revealEmpty(){
-                        if(expMines.includes(button.id)){
-
-                            return;
-                        }else{
-                            if(button.id+1<226){
+                        if(firstColumn.includes(parseInt(button.id))){
+                            if(button.id+1<totalButtons){
                                 document.getElementById(button.id +1).click();
                             }
-                            if(button.id-1>0){
-                                document.getElementById(button.id -1).click();
+                            if(button.id+30<totalButtons){
+                                document.getElementById(button.id +30).click();
                             }
-                            if(button.id+23<226){
-                                document.getElementById(button.id +23).click();
+                            if(button.id-30>0){
+                                document.getElementById(button.id -30).click();
                             }
-                            if(button.id-23>0){
-                                document.getElementById(button.id -23).click();
+                            if(button.id+31<totalButtons){
+                                document.getElementById(button.id +31).click();
                             }
-                            if(button.id+24<226){
-                                document.getElementById(button.id +24).click();
+                            if(button.id-29>0){
+                                document.getElementById(button.id -29).click();
                             }
-                            if(button.id-24>0){
-                                document.getElementById(button.id -24).click();
-                            }
-                            if(button.id+22<226){
-                                document.getElementById(button.id +22).click();
-                            }
-                            if(button.id-22>0){
-                                document.getElementById(button.id -22).click();
-                            }
-                            return; 
                         }
+                            else if(lastColumn.includes(parseInt(button.id))){
+                                if(button.id-1>0){
+                                    document.getElementById(button.id -1).click();
+                                }
+                                if(button.id+30<totalButtons){
+                                    document.getElementById(button.id +30).click();
+                                }
+                                if(button.id-30>0){
+                                    document.getElementById(button.id -30).click();
+                                }
+                                if(button.id-31>0){
+                                    document.getElementById(button.id -31).click();
+                                }
+                                if(button.id+29<totalButtons){
+                                    document.getElementById(button.id +29).click();
+                                }
+                            }
+                        
+                            else{
+                                if(button.id+1<totalButtons){
+                                    document.getElementById(button.id +1).click();
+                                }
+                                if(button.id-1>0){
+                                    document.getElementById(button.id -1).click();
+                                }
+                                if(button.id+30<totalButtons){
+                                    document.getElementById(button.id +30).click();
+                                }
+                                if(button.id-30>0){
+                                    document.getElementById(button.id -30).click();
+                                }
+                                if(button.id+31<totalButtons){
+                                    document.getElementById(button.id +31).click();
+                                }
+                                if(button.id-31>0){
+                                    document.getElementById(button.id -31).click();
+                                }
+                                if(button.id+29<totalButtons){
+                                    document.getElementById(button.id +29).click();
+                                }
+                                if(button.id-29>0){
+                                    document.getElementById(button.id -29).click();
+                                }
+                            } 
+                            return; 
+                        
                         }
                     }
             }
