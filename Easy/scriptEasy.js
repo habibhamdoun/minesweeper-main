@@ -56,26 +56,19 @@ function start(){
             square.setAttribute('id',i); // add id to buttons with name  i
             buttons.push(square.id); // add buttons id to array names buttons
     }
-for(let i=0;i<totalMines;i++){
+    for(let i=0;i<totalMines;i++){
+        while(expMines.length<totalMines){
         let expMine= Math.floor(Math.random() * buttons.length);
         expMines.push(expMine);
-        let randomNum=Math.floor(Math.random() * buttons.length)
-        function hasDuplicates(arr) {
-            return new Set(arr).size !== arr.length;
+        let toFindDuplicates = arry => arry.filter((item, index) => arry.indexOf(item) !== index);
+        let duplicateElements = toFindDuplicates(expMines);
+        expMines.splice(expMines.indexOf(duplicateElements),duplicateElements.length);
+        console.log(duplicateElements);
+        duplicateElements=[];
         }
-        if (hasDuplicates(expMines)) {
-            var expMineIndex=expMines.indexOf(expMine);
-            expMines.splice(expMineIndex,1);
-            if(expMine>buttons.length/2)
-            expMines.push(expMine+randomNum);
-            else{
-                console.log('duplicate found')
-                expMines.push(expMine+Math.floor(buttons.length/2));
-            }
-        }
-        
         // random number add it to array named expMines 
     }
+    
     console.log(expMines);
     console.log('expMines');
     

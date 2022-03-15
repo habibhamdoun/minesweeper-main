@@ -44,35 +44,30 @@ function newGame(){ // reset all arrays for a new game
     flagcount=0;
     hintCount=0;
     document.getElementById('score').value=totalMines-flagcount; // print total flags left in input
-
+    
+}
+function hasDuplicates(array) {
+return new Set(array).size !== array.length;
 }
 function start(){
-        newGame();
-        for(let i=0;i<totalButtons;i++){
-            let square = document.createElement('button'); // create buttons
-            document.getElementById('mineField').appendChild(square); // make buttons in mine fields
-            square.setAttribute('class','mineButtons'); // add class to buttons
-            square.setAttribute('id',i); // add id to buttons with name  i
-            buttons.push(square.id); // add buttons id to array names buttons
+    newGame();
+    for(let i=0;i<totalButtons;i++){
+        let square = document.createElement('button'); // create buttons
+        document.getElementById('mineField').appendChild(square); // make buttons in mine fields
+        square.setAttribute('class','mineButtons'); // add class to buttons
+        square.setAttribute('id',i); // add id to buttons with name  i
+        buttons.push(square.id); // add buttons id to array names buttons
     }
     for(let i=0;i<totalMines;i++){
+        while(expMines.length<totalMines){
         let expMine= Math.floor(Math.random() * buttons.length);
-        expMines.push(expMine); 
-        let randomNum=Math.floor(Math.random() * buttons.length)
-        function hasDuplicates(arr) {
-            return new Set(arr).size !== arr.length;
+        expMines.push(expMine);
+        let toFindDuplicates = arry => arry.filter((item, index) => arry.indexOf(item) !== index);
+        let duplicateElements = toFindDuplicates(expMines);
+        expMines.splice(expMines.indexOf(duplicateElements),duplicateElements.length);
+        console.log(duplicateElements);
+        duplicateElements=[];
         }
-        if (hasDuplicates(expMines)) {
-            var expMineIndex=expMines.indexOf(expMine);
-            expMines.splice(expMineIndex,1);
-            if(expMine>buttons.length/2)
-            expMines.push(expMine+randomNum);
-            else{
-                console.log('duplicate found')
-                expMines.push(expMine+buttons.length/2);
-            }
-        }
-
         // random number add it to array named expMines 
     }
     console.log(expMines);
