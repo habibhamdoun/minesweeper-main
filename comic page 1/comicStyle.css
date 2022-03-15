@@ -16,9 +16,11 @@ a{
     color: #000;
 }
 body{
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 100w;
     height: 100vh;
+    padding: 0%;
+    margin: 0%;
 }
 #bigPanel{
     display: flex;
@@ -106,19 +108,14 @@ body{
     grid-template-rows: 33% 33% 33%;
     margin-bottom: 20%;
 }
-.left-point{
-	width: 0;
-	height: 0;
-	border-left: 2vh solid transparent;
-	border-right: 2vh solid transparent;
-	border-top: 10vh solid white;
-	position: absolute;
-	top: 45%;
-	left: -10%;
-	transform: rotate(60deg);
+.footer{
+    background-color:#fff;
+    border:solid 2px black ;
+    transform: skew(-15deg);
+    padding: 0.4rem;
+    font-weight: bolder;
+
 }
-
-
 @media screen and (min-width:300px) and (max-width:600px) {
         .startBtns {
             width: 20%;

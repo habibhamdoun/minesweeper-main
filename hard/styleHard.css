@@ -37,6 +37,12 @@ body{
     width:40%;
     align-self: center;
 }
+.time{
+    border: 1px solid black;
+    background: white;
+    padding: 0.5rem;
+}
+
 label{
     background-color: white;
     padding: 3%;

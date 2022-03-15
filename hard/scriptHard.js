@@ -21,8 +21,11 @@ var expAudio=document.getElementById('expAudio');
 var flagAudio=document.getElementById('flagAudio');
 var flagRemoved=document.getElementById('flagRemoved');
 var winAudio=document.getElementById('winAudio');
-var totalHints=0    ;
+var totalHints=0;
 var hintCount=0;
+var totalSec=0;
+var totalMsec=0;
+var totalMin=0;
 document.getElementById('score').value="Mines Left : "+score; // print total flags left in input
 var bg1='radial-gradient(circle, yellow, orange)';
 var bg2='radial-gradient(circle, lightblue, deepskyblue)';
@@ -55,6 +58,36 @@ function start(){
             square.setAttribute('id',i); // add id to buttons with name  i
             buttons.push(square.id); // add buttons id to array names buttons
     }
+    buttons.forEach(function(mybutton){
+        var button=document.getElementById(mybutton);
+        button.addEventListener('click',function(){
+            var milliSec=document.getElementById('milliSec');
+            var sec=document.getElementById('sec');
+            var min=document.getElementById('min');
+            totalSec=0;
+            totalMin=0
+            totalMsec=0;
+            const timerStart=setInterval(startTimer,1);
+            function startTimer(){
+                ++totalMsec
+                if(totalMsec<10)milliSec.innerHTML='0'+'0'+totalMsec;
+                else if(totalMsec<90)milliSec.innerHTML='0'+totalMsec;
+                else milliSec.innerHTML=totalMsec;
+                if(totalMsec==100){
+                    totalMsec=0;
+                    ++totalSec
+                    if(totalSec<10)sec.innerHTML='0'+totalSec;
+                    else sec.innerHTML=totalSec;
+                }
+                if(totalSec==60){
+                    totalSec=0;
+                    ++totalMin
+                    if(totalMin<10)min.innerHTML='0'+totalMin;
+                    else min.innerHTML=totalMin;
+                }
+            }
+        },{once:true})
+    });
     for(let i=0;i<totalMines;i++){
         while(expMines.length<totalMines){
         let expMine= Math.floor(Math.random() * buttons.length);
@@ -172,7 +205,19 @@ function start(){
                     button.innerHTML='';
                     //after clicking a mine alert you lost and remove added classes and inner text
                     })
-                    alert("You lost!"); 
+                    function timerClear(){
+                        document.getElementById('sec').innerHTML='0'+0;
+                        document.getElementById('milliSec').innerHTML='0'+0;
+                        document.getElementById('min').innerHTML='0'+0;
+                        totalMsec=0;
+                        totalSec=0;
+                        totalMin=0;
+                    }
+                    timerClear();
+                    var interval_id = window.setInterval(()=>{}, 99999);
+                    for (var i = 0; i < interval_id; i++)
+                    window.clearInterval(i);
+                    alert('you lost!');
                     start();
                 }, 500);
             }

@@ -10,7 +10,9 @@
 </head>
 <body>
    <h1> HARD level</h1>
-
+   <div class="time">
+    <span id="min">00</span> <span>:</span> <span id="sec">00</span> <span>:</span> <span id="milliSec">00</span>
+ </div>
 <div class="icon">
     <i class="fa-solid fa-bomb"></i>
     <i class="fa-solid fa-flag" style="color: red;"></i>
@@ -23,9 +25,9 @@
 </div>
     <div id="container">
         <div id="scoreField">
-            <label for="score">Mines Left:</label>
+            <label for="score">Mines </label>
                 <input type="text" id="score" readonly>
-                <label for="hint">hints left:</label><button id="hint" >hint</button>
+                <label for="hint">hints </label><button id="hint" ></button>
         </div> 
         <div id="mineField"></div>
     </div>

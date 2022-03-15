@@ -9,23 +9,25 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    transition: background-image 2s;
+    transition:  2s;
     background-image: radial-gradient(circle, yellow, orange);
+    overflow: hidden;
 }
 
 
 
 
 /* body styles */
-
+h1{
+    margin: 0%;
+}
 #mineField{
     display: flex;
     flex-wrap: wrap;
 }
 #container{
-    width: 32rem;
-    height: 36.075rem;
+    width: 31rem;
+    height: 35rem;
     border: solid 5px black;
 }
 #scoreField{
@@ -45,6 +47,12 @@ body{
     margin-bottom: 0.3rem;
 
 }
+.time{
+    border: 1px solid black;
+    background: white;
+    padding: 0.5rem;
+}
+
 label{
     background-color: white;
     padding: 3%;
@@ -52,8 +60,8 @@ label{
     border: 1px solid black;
 }
 .mineButtons{
-    height:32px;
-    width: 32px;
+    height:31px;
+    width: 31px;
     /* border: solid 1px red; */
     margin: 1px;
     

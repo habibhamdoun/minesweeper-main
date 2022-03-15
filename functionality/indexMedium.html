@@ -10,22 +10,24 @@
 </head>
 <body>
    <h1> Medium level</h1>
-   
- <div class="icon">
+   <div class="icon">
    <i class="fa-solid fa-bomb"></i>
    <i class="fa-solid fa-flag" style="color: red;"></i>
    <audio id="expAudio" src="../functionality/Big Explosion Effect Video Mp4 HD Sound.mp3"></audio>
-    <audio src="../functionality/Video Game Beep - Sound Effect.mp3" id="flagAudio"></audio>
-    <audio src="../functionality/Computer Error sound effect.mp3"id="flagRemoved"></audio>
-    <audio src="../functionality/WIN sound effect no copyright.mp3" id="winAudio"></audio>
- </div>
- <div >
+   <audio src="../functionality/Video Game Beep - Sound Effect.mp3" id="flagAudio"></audio>
+   <audio src="../functionality/Computer Error sound effect.mp3"id="flagRemoved"></audio>
+   <audio src="../functionality/WIN sound effect no copyright.mp3" id="winAudio"></audio>
 </div>
-   <div id="container">
+<div >
+</div>
+<div class="time">
+   <span id="min">00</span> <span>:</span> <span id="sec">00</span> <span>:</span> <span id="milliSec">00</span>
+</div>
+<div id="container">
       <div id="scoreField">
-         <label for="score">Mines Left:</label>
+         <label for="score">Mines:</label>
             <input type="text" id="score" readonly>
-         <label for="hint" >hints left:</label><button name="hint" id="hint"  ></button>
+         <label for="hint" >hints:</label><button name="hint" id="hint"  ></button>
       </div> 
       <div id="mineField">
 
