@@ -42,7 +42,27 @@ body{
     background: white;
     padding: 0.5rem;
 }
+#aboveContainer{
+    width: 64.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#backBtn{
+    
+    text-align: center;
+    background-color:#fff;
+    border:solid 2px black ;
+    width: 7rem;
+    transform: skew(-15deg);
+    margin-left: 0.3rem;
+}
 
+.time{
+    border: 1px solid black;
+    background: white;
+    padding: 0.5rem;
+}
 label{
     background-color: white;
     padding: 3%;

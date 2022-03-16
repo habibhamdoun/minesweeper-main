@@ -243,75 +243,74 @@ function start(){
                     // if button not close to mines put empty space
                     button.classList.add('pressedButtons');
                     revealEmpty();
-                    function revealEmpty(){
-                        if(firstColumn.includes(parseInt(button.id))){
-                            if(button.id-15>0){
-                                document.getElementById(button.id -15).click();
-                            }
-                            if(button.id-14>0){
-                                document.getElementById(button.id -14).click();
-                            }
-                            if(button.id+1<226){
-                                document.getElementById(button.id +1).click();
-                            }
-                            if(button.id+15<226){
-                                document.getElementById(button.id +15).click();
-                            }
-                            if(button.id+16<226){
-                                document.getElementById(button.id +16).click();
-                            }
-                        }
-                        else if(lastColumn.includes(parseInt(button.id))){
-                            if(button.id-1>0){
-                                document.getElementById(button.id -1).click();
-                            }
-                            if(button.id+15<226){
-                                document.getElementById(button.id +15).click();
-                            }
-                            if(button.id-15>0){
-                                document.getElementById(button.id -15).click();
-                            }
-                            if(button.id-16>0){
-                                document.getElementById(button.id -16).click();
-                            }
-                            if(button.id+14<226){
-                                document.getElementById(button.id +14).click();
-                            }
-                        }
-                        else{
-
-                            if(button.id+1<226){
-                                document.getElementById(button.id +1).click();
-                            }
-                            if(button.id-1>0){
-                                document.getElementById(button.id -1).click();
-                            }
-                            if(button.id+15<226){
-                                document.getElementById(button.id +15).click();
-                            }
-                            if(button.id-15>0){
-                                document.getElementById(button.id -15).click();
-                            }
-                            if(button.id+16<226){
-                                document.getElementById(button.id +16).click();
-                            }
-                            if(button.id-16>0){
-                                document.getElementById(button.id -16).click();
-                            }
-                            if(button.id+14<226){
-                                document.getElementById(button.id +14).click();
-                            }
-                            if(button.id-14>0){
-                                document.getElementById(button.id -14).click();
-                            }
-                        }
-                            return; 
-                        
-                        }
-                    }
+                            function revealEmpty(){
+                                    if(firstColumn.includes(parseInt(parseInt(button.id)))){
+                                        if(parseInt(button.id)-15>0){
+                                            document.getElementById(parseInt(button.id) -15).click();
+                                        }
+                                        if(parseInt(button.id)-14>0){
+                                            document.getElementById(parseInt(button.id) -14).click();
+                                        }
+                                        if(parseInt(button.id)+1<226){
+                                            document.getElementById(parseInt(button.id) +1).click();
+                                        }
+                                        if(parseInt(button.id)+15<226){
+                                            document.getElementById(parseInt(button.id) +15).click();
+                                        }
+                                        if(parseInt(button.id)+16<226){
+                                            document.getElementById(parseInt(button.id) +16).click();
+                                        }
+                                    }
+                                    else if(lastColumn.includes(parseInt(parseInt(button.id)))){
+                                        if(parseInt(button.id)-1>0){
+                                            document.getElementById(parseInt(button.id) -1).click();
+                                        }
+                                        if(parseInt(button.id)+15<226){
+                                            document.getElementById(parseInt(button.id) +15).click();
+                                        }
+                                        if(parseInt(button.id)-15>0){
+                                            document.getElementById(parseInt(button.id) -15).click();
+                                        }
+                                        if(parseInt(button.id)-16>0){
+                                            document.getElementById(parseInt(button.id) -16).click();
+                                        }
+                                        if(parseInt(button.id)+14<226){
+                                            document.getElementById(parseInt(button.id) +14).click();
+                                        }
+                                    }
+                                    else{
+                                        if(parseInt(button.id)+1<226){
+                                            document.getElementById(parseInt(button.id) +1).click();
+                                        }
+                                        if(parseInt(button.id)-1>0){
+                                            document.getElementById(parseInt(button.id) -1).click();
+                                        }
+                                        if(parseInt(button.id)+15<226){
+                                            document.getElementById(parseInt(button.id) +15).click();
+                                        }
+                                        if(parseInt(button.id)-15>0){
+                                            document.getElementById(parseInt(button.id) -15).click();
+                                        }
+                                        if(parseInt(button.id)+16<226){
+                                            document.getElementById(parseInt(button.id) +16).click();
+                                        }
+                                        if(parseInt(button.id)-16>0){
+                                            document.getElementById(parseInt(button.id) -16).click();
+                                        }
+                                        if(parseInt(button.id)+14<226){
+                                            document.getElementById(parseInt(button.id) +14).click();
+                                        }
+                                        if(parseInt(button.id)-14>0){
+                                            document.getElementById(parseInt(button.id) -14).click();
+                                        }
+                                    }
+                                        return; 
+                    
+                }
             }
-        })
-    }, false);
+        }
+    })
+}, false);
     buttons.forEach(function(mybutton){
         flagcount=0
         var button=document.getElementById(mybutton);
@@ -320,14 +319,15 @@ function start(){
             return;
                //if you reached max limit of flags skip this function
         }
-            if(button.classList.contains('flagged')){
-                    button.onauxclick=function(){
-                    button.innerHTML='';
-                    button.classList.remove('flagged');
-                    flagcount--
-                    flagRemoved.play();
-                    //if button clicked already has a flag remove flag
-                }
+        if(button.classList.contains('flagged')){
+            button.innerHTML='';
+            button.classList.remove('flagged');
+            flagcount--
+            flagRemoved.play();
+            if(expMines.includes(parseInt(button.id)))
+            flagcount--
+            //if button clicked already has a flag remove flag
+            return;
             }
             else{
                 button.innerHTML='<i class="fa-solid fa-flag"></i>';
@@ -365,7 +365,13 @@ function start(){
 
     })
 };
-
+document.addEventListener('click',play);
+function play(event){
+    var btn=event.target;
+    if(btn.id==='backBtn'){
+        window.open('../comic page 1/comicIndex.html')
+    }
+}
 
 
 start();

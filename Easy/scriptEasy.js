@@ -315,18 +315,19 @@ function start(){
         flagcount=0
         var button=document.getElementById(mybutton);
         button.addEventListener('auxclick',function(){
-        if(flagcount==totalMines){
-            return;
-               //if you reached max limit of flags skip this function
-        }
+            if(flagcount==totalMines){
+                return;
+                //if you reached max limit of flags skip this function
+            }
             if(button.classList.contains('flagged')){
-                    button.onauxclick=function(){
                     button.innerHTML='';
                     button.classList.remove('flagged');
                     flagcount--
                     flagRemoved.play();
+                    if(expMines.includes(parseInt(button.id)))
+                    flagcount--
                     //if button clicked already has a flag remove flag
-                }
+                    return;
             }
             else{
                 button.innerHTML='<i class="fa-solid fa-flag"></i>';
@@ -335,17 +336,16 @@ function start(){
                 flagAudio.play();
                 //if button clicked doesnt have flag add flag and flag class
             }
-        if(expMines.includes(parseInt(button.id))){
-            flaggedMine++
-        }
-        console.log(flaggedMine);
-        if(flaggedMine===totalMines){
-            alert('you win!');
-            winAudio.play();
-            start();
-        }
-
-            document.getElementById('score').value=totalMines-flagcount; // print total flags left in input
+            if(expMines.includes(parseInt(button.id))){
+                flaggedMine++
+            }
+            console.log(flaggedMine);
+            if(flaggedMine===totalMines){
+                alert('you win!');
+                winAudio.play();
+                start();
+            }
+            document.getElementById('score').innerText=totalMines-flagcount; // print total flags left in input
         });
         
     })
@@ -363,7 +363,13 @@ function start(){
     })
     
 };
-
+document.addEventListener('click',play);
+function play(event){
+    var btn=event.target;
+    if(btn.id==='backBtn'){
+        window.open('../comic page 1/comicIndex.html')
+    }
+}
 
 
 start();

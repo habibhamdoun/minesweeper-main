@@ -33,10 +33,26 @@ body{
     display: flex;
 }
 #score{
-    height:30%;
-    width:40%;
+    height:2rem;
+    width:2rem;
     align-self: center;
 }
+#aboveContainer{
+    width: 17.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#backBtn{
+    
+    text-align: center;
+    background-color:#fff;
+    border:solid 2px black ;
+    width: 7rem;
+    transform: skew(-15deg);
+    margin-left: 0.3rem;
+}
+
 .time{
     border: 1px solid black;
     background: white;
@@ -74,10 +90,4 @@ label{
     
     padding: 7px 10px 20px 10px; 
     margin-bottom: 0.3rem;
-}
-label{
-    background-color: white;
-    padding: 3%;
-    margin: 1%;
-    border: 1px solid black;
 }

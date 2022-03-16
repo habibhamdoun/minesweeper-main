@@ -35,6 +35,27 @@ h1{
     height: 60px;
     display: flex;
 }
+#aboveContainer{
+    width: 31.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#backBtn{
+    
+    text-align: center;
+    background-color:#fff;
+    border:solid 2px black ;
+    width: 7rem;
+    transform: skew(-15deg);
+    margin-left: 0.3rem;
+}
+
+.time{
+    border: 1px solid black;
+    background: white;
+    padding: 0.5rem;
+}
 #score{
     height:30%;
     width:40%;
@@ -91,5 +112,8 @@ label{
     .mineButtons{
         height: 23px;
         width: 23px;
+    }
+    #aboveContainer{
+        width: 24rem;
     }
 } 

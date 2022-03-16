@@ -8,7 +8,7 @@ var buttons=[];// buttons is an array that contains all the buttons
 var count=0; // how many mines nearby
 var finalCount=[];// array that hols the total of counts on each button
 var i=0; // var that iterates over every button
-var totalMines=100; // total number of mines
+var totalMines=60; // total number of mines
 var expMines=[]; // expMines is an array with explosive mines
 var emptyCount=[];// contains safe buttons 
 var lastColumn=[];// buttons from last row
@@ -103,13 +103,13 @@ function start(){
     console.log(expMines);
     console.log('expMines');
     
-    for(let t=22;t<totalButtons;t=t+23){
+    for(let t=29;t<totalButtons;t=t+30){
         var button=document.getElementById(t).id;
         lastColumn.push(parseInt(button));
     }
     console.log(lastColumn);
     console.log('lastColumn');
-    for(let y=0;y<totalButtons;y=y+23){
+    for(let y=0;y<totalButtons;y=y+30){
         var button=document.getElementById(y).id;
         firstColumn.push(parseInt(button));
     }
@@ -241,69 +241,38 @@ function start(){
                     button.classList.add('pressedButtons');
                     revealEmpty();
                     function revealEmpty(){
-                        if(firstColumn.includes(parseInt(button.id))){
-                            if(button.id+1<totalButtons){
-                                document.getElementById(button.id +1).click();
+                            if(parseInt(button.id)+1<totalButtons){
+                                document.getElementById(parseInt(button.id) +1).click();
                             }
-                            if(button.id+30<totalButtons){
-                                document.getElementById(button.id +30).click();
+                            if(parseInt(button.id)+30<totalButtons){
+                                document.getElementById(parseInt(button.id) +30).click();
                             }
-                            if(button.id-30>0){
-                                document.getElementById(button.id -30).click();
+                            if(parseInt(button.id)-30>0){
+                                document.getElementById(parseInt(button.id) -30).click();
                             }
-                            if(button.id+31<totalButtons){
-                                document.getElementById(button.id +31).click();
+                            if(parseInt(button.id)+31<totalButtons){
+                                document.getElementById(parseInt(button.id) +31).click();
                             }
-                            if(button.id-29>0){
-                                document.getElementById(button.id -29).click();
+                            if(parseInt(button.id)-29>0){
+                                document.getElementById(parseInt(button.id) -29).click();
                             }
-                        }
                             else if(lastColumn.includes(parseInt(button.id))){
-                                if(button.id-1>0){
+                                if(parseInt(button.id)-1>0){
                                     document.getElementById(button.id -1).click();
                                 }
-                                if(button.id+30<totalButtons){
+                                if(parseInt(button.id)+30<totalButtons){
                                     document.getElementById(button.id +30).click();
                                 }
-                                if(button.id-30>0){
+                                if(parseInt(button.id)-30>0){
                                     document.getElementById(button.id -30).click();
                                 }
-                                if(button.id-31>0){
+                                if(parseInt(button.id)-31>0){
                                     document.getElementById(button.id -31).click();
                                 }
-                                if(button.id+29<totalButtons){
+                                if(parseInt(button.id)+29<totalButtons){
                                     document.getElementById(button.id +29).click();
                                 }
                             }
-                        
-                            else{
-                                if(button.id+1<totalButtons){
-                                    document.getElementById(button.id +1).click();
-                                }
-                                if(button.id-1>0){
-                                    document.getElementById(button.id -1).click();
-                                }
-                                if(button.id+30<totalButtons){
-                                    document.getElementById(button.id +30).click();
-                                }
-                                if(button.id-30>0){
-                                    document.getElementById(button.id -30).click();
-                                }
-                                if(button.id+31<totalButtons){
-                                    document.getElementById(button.id +31).click();
-                                }
-                                if(button.id-31>0){
-                                    document.getElementById(button.id -31).click();
-                                }
-                                if(button.id+29<totalButtons){
-                                    document.getElementById(button.id +29).click();
-                                }
-                                if(button.id-29>0){
-                                    document.getElementById(button.id -29).click();
-                                }
-                            } 
-                            return; 
-                        
                         }
                     }
             }
@@ -317,14 +286,15 @@ function start(){
             return;
                //if you reached max limit of flags skip this function
         }
-            if(button.classList.contains('flagged')){
-                    button.onauxclick=function(){
-                    button.innerHTML='';
-                    button.classList.remove('flagged');
-                    flagcount--
-                    flagRemoved.play();
-                    //if button clicked already has a flag remove flag
-                }
+        if(button.classList.contains('flagged')){
+            button.innerHTML='';
+            button.classList.remove('flagged');
+            flagcount--
+            flagRemoved.play();
+            if(expMines.includes(parseInt(button.id)))
+            flagcount--
+            //if button clicked already has a flag remove flag
+            return;
             }
             else{
                 button.innerHTML='<i class="fa-solid fa-flag"></i>';
@@ -353,7 +323,12 @@ function start(){
 
     })
 };
-
-
+document.addEventListener('click',play);
+function play(event){
+    var btn=event.target;
+    if(btn.id==='backBtn'){
+        window.open('../comic page 1/comicIndex.html')
+    }
+}
 
 start();

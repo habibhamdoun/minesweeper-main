@@ -10,10 +10,10 @@
         }
         else if(btn.id==='backBtn'||btn.id==='backBtn1'){
                 document.getElementById('bigPanel').style.backgroundImage='radial-gradient(circle, yellow, orange)';
-            document.getElementById('bigPanel').style.justifyContent='center';
+            document.getElementById('bigPanel').style.justifyContent='space-around';
             document.getElementById('bigPanel').style.flexDirection='column';
             document.getElementById('bigPanel').style.alignItems='center';
-            document.getElementById('bigPanel').innerHTML='<div id="title">MinesSweeper... </div> <button class="startBtns" id="playBtn">Play</button> <button class="startBtns" id="tutorialBtn">Tutorial</button></div>';
+            document.getElementById('bigPanel').innerHTML=' <div id="title"> MinesSweeper... </div> <div class="startBtnDiv"> <button class="startBtns" id="playBtn">Play</button> <button class="startBtns" id="tutorialBtn">Tutorial</button> </div><button  class="footer">Made by Habib from the youth tech unit at LOYAC Lebanon</button >';
             }
         else if(btn.id==='playBtn'){
             var confirmation=confirm('Are you sure you know how to play?');
