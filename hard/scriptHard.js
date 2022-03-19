@@ -26,7 +26,7 @@ var hintCount=0;
 var totalSec=0;
 var totalMsec=0;
 var totalMin=0;
-document.getElementById('score').value="Mines Left : "+score; // print total flags left in input
+document.getElementById('score').innerHTML=score; // print total flags left in input
 var bg1='radial-gradient(circle, yellow, orange)';
 var bg2='radial-gradient(circle, lightblue, deepskyblue)';
 var bg3='radial-gradient(circle, lightcoral, tomato)';
@@ -46,7 +46,7 @@ function newGame(){ // reset all arrays for a new game
     count=0;
     flagcount=0;
     hintCount=0;
-    document.getElementById('score').value=totalMines-flagcount; // print total flags left in input
+    document.getElementById('score').innerHTML=totalMines-flagcount; // print total flags left in input
 
 }
 function start(){
@@ -67,12 +67,11 @@ function start(){
             totalSec=0;
             totalMin=0
             totalMsec=0;
-            const timerStart=setInterval(startTimer,1);
+            const timerStart=setInterval(startTimer,10);
             function startTimer(){
                 ++totalMsec
                 if(totalMsec<10)milliSec.innerHTML='0'+'0'+totalMsec;
                 else if(totalMsec<90)milliSec.innerHTML='0'+totalMsec;
-                else milliSec.innerHTML=totalMsec;
                 if(totalMsec==100){
                     totalMsec=0;
                     ++totalSec
@@ -207,7 +206,7 @@ function start(){
                     })
                     function timerClear(){
                         document.getElementById('sec').innerHTML='0'+0;
-                        document.getElementById('milliSec').innerHTML='0'+0;
+                        document.getElementById('milliSec').innerHTML='0'+'0'+0;
                         document.getElementById('min').innerHTML='0'+0;
                         totalMsec=0;
                         totalSec=0;
@@ -282,19 +281,21 @@ function start(){
         flagcount=0
         var button=document.getElementById(mybutton);
         button.addEventListener('auxclick',function(){
-        if(flagcount==totalMines){
-            return;
-               //if you reached max limit of flags skip this function
-        }
-        if(button.classList.contains('flagged')){
-            button.innerHTML='';
-            button.classList.remove('flagged');
-            flagcount--
-            flagRemoved.play();
-            if(expMines.includes(parseInt(button.id)))
-            flagcount--
-            //if button clicked already has a flag remove flag
-            return;
+            if(flagcount==totalMines){
+                return;
+                //if you reached max limit of flags skip this function
+            }
+            if(button.classList.contains('flagged')){
+                    button.innerHTML='';
+                    button.classList.remove('flagged');
+                    flagcount--
+                    flagRemoved.play();
+                    if(expMines.includes(parseInt(button.id))){
+                        flagcount--
+                        flaggedMine--
+                    }
+                    //if button clicked already has a flag remove flag
+                    return;
             }
             else{
                 button.innerHTML='<i class="fa-solid fa-flag"></i>';
@@ -303,16 +304,27 @@ function start(){
                 flagAudio.play();
                 //if button clicked doesnt have flag add flag and flag class
             }
-        if(expMines.includes(parseInt(button.id))){
-            flaggedMine++
-        }
-        console.log(flaggedMine);
-        if(flaggedMine===totalMines){
-            alert('you win!');
-            winAudio.play();
-            start();
-        }
-
+            if(expMines.includes(parseInt(button.id))){
+                flaggedMine++
+            }
+            console.log(flaggedMine);
+            if(flaggedMine===totalMines){
+                function timerClear(){
+                    document.getElementById('sec').innerHTML='0'+0;
+                    document.getElementById('milliSec').innerHTML='0'+'0'+0;
+                    document.getElementById('min').innerHTML='0'+0;
+                    totalMsec=0;
+                    totalSec=0;
+                    totalMin=0;
+                }
+                timerClear();
+                var interval_id = window.setInterval(()=>{}, 99999);
+                for (var i = 0; i < interval_id; i++)
+                window.clearInterval(i);
+                alert('you win!');
+                winAudio.play();
+                start();
+            }
             document.getElementById('score').value=totalMines-flagcount; // print total flags left in input
         });
         

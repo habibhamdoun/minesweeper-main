@@ -58,6 +58,9 @@ body{
     background: white;
     padding: 0.5rem;
 }
+.time span{
+    font-family: monospace;
+}
 
 label{
     background-color: white;

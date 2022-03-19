@@ -33,14 +33,17 @@ body{
     display: flex;
 }
 #score{
-    height:30%;
-    width:40%;
+    height:2rem;
+    width:2rem;
     align-self: center;
 }
 .time{
     border: 1px solid black;
     background: white;
     padding: 0.5rem;
+}
+.time span{
+    font-family: monospace;
 }
 #aboveContainer{
     width: 64.5rem;
@@ -56,12 +59,6 @@ body{
     width: 7rem;
     transform: skew(-15deg);
     margin-left: 0.3rem;
-}
-
-.time{
-    border: 1px solid black;
-    background: white;
-    padding: 0.5rem;
 }
 label{
     background-color: white;
