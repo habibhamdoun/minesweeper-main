@@ -108,6 +108,7 @@ label{
     background-Color:rgb(54, 52, 52);
     color: white;
     opacity: 0.65;
+    font-size: 20px;
 }
 .pressedButtons[disabled]{
     color: white;

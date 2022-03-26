@@ -189,6 +189,7 @@ function start(){
             // button is a variable containing each square respectively  
             // add event listener mouse click to every button
         {
+            document.getElementById(mybutton).disabled=true;
             if(expMines.includes(parseInt(mybutton))){
                 // if(button.innerHTML!="")
                 // return;
@@ -205,21 +206,15 @@ function start(){
                     button.innerHTML='';
                     //after clicking a mine alert you lost and remove added classes and inner text
                     })
-                    function timerClear(){
-                        document.getElementById('sec').innerHTML='0'+0;
-                        document.getElementById('milliSec').innerHTML='0'+'0'+0;
-                        document.getElementById('min').innerHTML='0'+0;
-                        totalMsec=0;
-                        totalSec=0;
-                        totalMin=0;
-                    }
-                    timerClear();
-                    var interval_id = window.setInterval(()=>{}, 99999);
-                    for (var i = 0; i < interval_id; i++)
-                    window.clearInterval(i);
-                    alert('you lost!');
-                    start();
                 }, 500);
+                var interval_id = window.setInterval(()=>{}, 99999);
+                for (var i = 0; i < interval_id; i++)
+                window.clearInterval(i);
+                for(var i=0;i<buttons.length;i++)
+                document.getElementById(i).disabled=true;
+                var totaleTime=document.getElementsByClassName('time').innerText;
+                document.getElementById('totale').display='block';
+                document.getElementById('totale').innerHTML='You lost! ';
             }
             else{
                 
@@ -243,34 +238,44 @@ function start(){
                     function revealEmpty(){
                             if(parseInt(button.id)+1<totalButtons){
                                 document.getElementById(parseInt(button.id) +1).click();
+                                document.getElementById(parseInt(button.id) +1).disabled=true;
                             }
                             if(parseInt(button.id)+30<totalButtons){
                                 document.getElementById(parseInt(button.id) +30).click();
+                                document.getElementById(parseInt(button.id) +30).disabled=true;
                             }
                             if(parseInt(button.id)-30>0){
                                 document.getElementById(parseInt(button.id) -30).click();
+                                document.getElementById(parseInt(button.id) -30).disabled=true;
                             }
                             if(parseInt(button.id)+31<totalButtons){
                                 document.getElementById(parseInt(button.id) +31).click();
+                                document.getElementById(parseInt(button.id) +31).disabled=true;
                             }
                             if(parseInt(button.id)-29>0){
                                 document.getElementById(parseInt(button.id) -29).click();
+                                document.getElementById(parseInt(button.id) -29).disabled=true;
                             }
                             else if(lastColumn.includes(parseInt(button.id))){
                                 if(parseInt(button.id)-1>0){
                                     document.getElementById(button.id -1).click();
+                                    document.getElementById(parseInt(button.id) -1).disabled=true;
                                 }
                                 if(parseInt(button.id)+30<totalButtons){
                                     document.getElementById(button.id +30).click();
+                                    document.getElementById(parseInt(button.id) +30).disabled=true;
                                 }
                                 if(parseInt(button.id)-30>0){
                                     document.getElementById(button.id -30).click();
+                                    document.getElementById(parseInt(button.id) -30).disabled=true;
                                 }
                                 if(parseInt(button.id)-31>0){
                                     document.getElementById(button.id -31).click();
+                                    document.getElementById(parseInt(button.id) -31).disabled=true;
                                 }
                                 if(parseInt(button.id)+29<totalButtons){
                                     document.getElementById(button.id +29).click();
+                                    document.getElementById(parseInt(button.id) +29).disabled=true;
                                 }
                             }
                         }

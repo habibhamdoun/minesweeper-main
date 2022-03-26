@@ -4,7 +4,7 @@
 }
 body{
     width: 100vw;
-    height: 100vh;
+    height: 150vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,6 +37,17 @@ body{
     width:2rem;
     align-self: center;
 }
+.pressedButtons{
+    background-Color:rgb(54, 52, 52);
+    color: white;
+    opacity: 0.65;
+    font-size: 20px;
+}
+.pressedButtons[disabled]{
+    color: white;
+    background-Color:rgb(54, 52, 52);
+    
+}
 .time{
     border: 1px solid black;
     background: white;
@@ -44,6 +55,15 @@ body{
 }
 .time span{
     font-family: monospace;
+}
+#start{
+    
+    text-align: center;
+    background-color:#fff;
+    border:solid 2px black ;
+    width: 7rem;
+    transform: skew(-15deg);
+    margin-left: 0.3rem;
 }
 #aboveContainer{
     width: 64.5rem;
