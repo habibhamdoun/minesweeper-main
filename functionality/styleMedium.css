@@ -69,7 +69,21 @@ h1{
     margin-top: 0.3rem;
     padding: 10px; 
     margin-bottom: 0.3rem;
-
+}
+#start{
+    
+    text-align: center;
+    background-color:#fff;
+    border:solid 2px black ;
+    width: 7rem;
+    transform: skew(-15deg);
+    margin-left: 0.3rem;
+}
+#startDiv{
+    width: 16.5rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
 }
 .time{
     border: 1px solid black;
@@ -89,12 +103,17 @@ label{
     /* border: solid 1px red; */
     margin: 1px;
     
-
-        
 }
 .pressedButtons{
-    background-Color:rgb(138, 132, 132);
-   }
+    background-Color:rgb(54, 52, 52);
+    color: white;
+    opacity: 0.65;
+}
+.pressedButtons[disabled]{
+    color: white;
+    background-Color:rgb(54, 52, 52);
+    
+}
 .flagged{
     background-Color:rgb(138, 61, 61);
 }

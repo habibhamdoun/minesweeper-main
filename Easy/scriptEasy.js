@@ -35,6 +35,7 @@ function bg(){
     var randomNum=Math.floor(Math.random()*backgroundImages.length);
     document.querySelector('body').style.backgroundImage=backgroundImages[randomNum];
 }
+document.getElementById('start').addEventListener('click',start);
 setInterval(bg,5000);
 document.getElementById('score').innerHTML=score; // print total flags left in input
 function newGame(){ // reset all arrays for a new game
@@ -59,6 +60,7 @@ function newGame(){ // reset all arrays for a new game
     var interval_id = window.setInterval(()=>{}, 99999);
     for (var i = 0; i < interval_id; i++)
     window.clearInterval(i);
+    document.getElementById('totale').innerHTML='';
 }
 function start(){
         newGame();
@@ -216,21 +218,14 @@ function start(){
                     button.innerHTML='';
                     //after clicking a mine alert you lost and remove added classes and inner text
                     })
-                    function timerClear(){
-                        document.getElementById('sec').innerHTML='0'+0;
-                        document.getElementById('milliSec').innerHTML='0'+'0'+0;
-                        document.getElementById('min').innerHTML='0'+0;
-                        totalMsec=0;
-                        totalSec=0;
-                        totalMin=0;
-                    }
-                    timerClear();
-                    var interval_id = window.setInterval(()=>{}, 99999);
-                    for (var i = 0; i < interval_id; i++)
-                    window.clearInterval(i);
-                    alert('you lost!');
-                    start();
                 }, 500);
+                var interval_id = window.setInterval(()=>{}, 99999);
+                for (var i = 0; i < interval_id; i++)
+                window.clearInterval(i);
+                for(var i=0;i<buttons.length;i++)
+                document.getElementById(i).disabled=true;
+                document.getElementById('totale').innerHTML='You lost! :(';
+                
             }
             else{
                 
@@ -256,63 +251,82 @@ function start(){
 
                             if(parseInt(button.id)+1<totalButtons){
                                 document.getElementById(parseInt(button.id )+1).click();
+                                document.getElementById(parseInt(button.id )+1).disabled=true;
                             }
                             if(parseInt(button.id)+9<totalButtons){
                                 document.getElementById(parseInt(button.id )+9).click();
+                                document.getElementById(parseInt(button.id )+9).disabled=true;
                             }
                             if(parseInt(button.id)+8<totalButtons){
                                 document.getElementById(parseInt(button.id) +8).click();
+                                document.getElementById(parseInt(button.id )+8).disabled=true;
                             }
                             if(parseInt(button.id)-8>0){
                                 document.getElementById(parseInt(button.id )-8).click();
+                                document.getElementById(parseInt(button.id )-8).disabled=true;
                             }
                             if(parseInt(button.id)-7>0){
                                 document.getElementById(parseInt(button.id) -7).click();
+                                document.getElementById(parseInt(button.id )-7).disabled=true;
                             }
                         }
                         else if(lastColumn.includes(parseInt(button.id))){
 
                             if(parseInt(button.id)-9>0){
                                 document.getElementById(parseInt(button.id) -9).click();
+                                document.getElementById(parseInt(button.id )-9).disabled=true;
                             }
                             if(parseInt(button.id)+8<totalButtons){
                                 document.getElementById(parseInt(button.id) +8).click();
+                                document.getElementById(parseInt(button.id )+8).disabled=true;
                             }
                             if(parseInt(button.id)-8>0){
                                 document.getElementById(parseInt(button.id )-8).click();
+                                document.getElementById(parseInt(button.id )-8).disabled=true;
                             }
                             if(parseInt(button.id)+7<totalButtons){
                                 document.getElementById(parseInt(button.id) +7).click();
                             }
                             if(parseInt(button.id)-1<totalButtons){
                                 document.getElementById(parseInt(button.id )-1).click();
+                                document.getElementById(parseInt(button.id )-1).disabled=true;
                             }
                         }
                         else{
                             
                             if(parseInt(button.id)+1<totalButtons){
                                 document.getElementById(parseInt(button.id )+1).click();
+                                document.getElementById(parseInt(button.id )+1).disabled=true;
                             }
                             if(parseInt(button.id)-1>0){
                                 document.getElementById(parseInt(button.id) -1).click();
+                                document.getElementById(parseInt(button.id )-1).disabled=true;
+
                             }
                             if(parseInt(button.id)+9<totalButtons){
                                 document.getElementById(parseInt(button.id )+9).click();
+                                document.getElementById(parseInt(button.id )+9).disabled=true;
                             }
                             if(parseInt(button.id)-9>0){
                                 document.getElementById(parseInt(button.id) -9).click();
+                                document.getElementById(parseInt(button.id )-9).disabled=true
+
                             }
                             if(parseInt(button.id)+8<totalButtons){
                                 document.getElementById(parseInt(button.id) +8).click();
+                                document.getElementById(parseInt(button.id )+8).disabled=true;
                             }
                             if(parseInt(button.id)-9>0){
                                 document.getElementById(parseInt(button.id )-8).click();
+                                document.getElementById(parseInt(button.id )-8).disabled=true;
                             }
                             if(parseInt(button.id)+7<totalButtons){
                                 document.getElementById(parseInt(button.id) +7).click();
+                                document.getElementById(parseInt(button.id )+7).disabled=true;
                             }
                             if(parseInt(button.id)-7>0){
                                 document.getElementById(parseInt(button.id) -7).click();
+                                document.getElementById(parseInt(button.id )-7).disabled=true;
                             }
                         }
                             return; 
@@ -354,21 +368,16 @@ function start(){
             }
             console.log(flaggedMine);
             if(flaggedMine===totalMines){
-                function timerClear(){
-                    document.getElementById('sec').innerHTML='0'+0;
-                    document.getElementById('milliSec').innerHTML='0'+'0'+0;
-                    document.getElementById('min').innerHTML='0'+0;
-                    totalMsec=0;
-                    totalSec=0;
-                    totalMin=0;
-                }
-                timerClear();
                 var interval_id = window.setInterval(()=>{}, 99999);
                 for (var i = 0; i < interval_id; i++)
                 window.clearInterval(i);
-                alert('you win!');
+                var sec=document.getElementById('sec').innerText;
+                var milliSec=document.getElementById('milliSec').innerText;
+                var min=document.getElementById('min').innerText;
+                document.getElementById('totale').display='block';
+                document.getElementById('totale').innerHTML='You Win! Your score:'+min+":"+sec+":"+milliSec;
                 winAudio.play();
-                start();
+                
             }
             document.getElementById('score').innerText=totalMines-flagcount; // print total flags left in input
         });
@@ -396,6 +405,4 @@ function play(event){
         window.open('../comic page 1/comicIndex.html')
     }
 }
-
-
 start();

@@ -37,6 +37,7 @@ function bg(){
     document.querySelector('body').style.backgroundImage=backgroundImages[randomNum];
 }
 setInterval(bg,5000);
+document.getElementById('start').addEventListener('click',start);
 function newGame(){ // reset all arrays for a new game
     document.getElementById('mineField').innerHTML=''; // remove all buttons from minefield
     buttons=[];
@@ -47,7 +48,7 @@ function newGame(){ // reset all arrays for a new game
     flagcount=0;
     hintCount=0;
     document.getElementById('score').innerHTML=totalMines-flagcount; // print total flags left in input
-
+    document.getElementById('totale').innerHTML='';
 }
 function start(){
         newGame();
@@ -309,21 +310,15 @@ function start(){
             }
             console.log(flaggedMine);
             if(flaggedMine===totalMines){
-                function timerClear(){
-                    document.getElementById('sec').innerHTML='0'+0;
-                    document.getElementById('milliSec').innerHTML='0'+'0'+0;
-                    document.getElementById('min').innerHTML='0'+0;
-                    totalMsec=0;
-                    totalSec=0;
-                    totalMin=0;
-                }
-                timerClear();
                 var interval_id = window.setInterval(()=>{}, 99999);
                 for (var i = 0; i < interval_id; i++)
                 window.clearInterval(i);
-                alert('you win!');
+                var sec=document.getElementById('sec').innerText;
+                var milliSec=document.getElementById('milliSec').innerText;
+                var min=document.getElementById('min').innerText;
+                document.getElementById('totale').display='block';
+                document.getElementById('totale').innerHTML='You Win! Your score:'+min+":"+sec+":"+milliSec;
                 winAudio.play();
-                start();
             }
             document.getElementById('score').value=totalMines-flagcount; // print total flags left in input
         });

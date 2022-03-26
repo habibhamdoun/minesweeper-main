@@ -2,6 +2,7 @@
 *{
     font-family: 'Comic Sans MS',sans-serif ;
 }
+
 body{
     width: 100vw;
     height: 100vh;
@@ -52,11 +53,34 @@ body{
     transform: skew(-15deg);
     margin-left: 0.3rem;
 }
+#totale{
+    width: 100%;
+    height: 1.5rem;
+    text-align: center;
+    /* display: none; */
+}
+#start{
+    
+    text-align: center;
+    background-color:#fff;
+    border:solid 2px black ;
+    width: 7rem;
+    transform: skew(-15deg);
+    margin-left: 0.3rem;
+}
+#startDiv{
+    width: 16.5rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
 
 .time{
-    border: 1px solid black;
+    border: 2px solid black;
     background: white;
     padding: 0.5rem;
+    transform: skew(15deg);
+    margin-right: 0.2rem;
 }
 .time span{
     font-family: monospace;
@@ -74,8 +98,15 @@ label{
     margin: 1px;
 }
 .pressedButtons{
-    background-Color:rgb(138, 132, 132);
-   }
+    background-Color:rgb(54, 52, 52);
+    color: white;
+    opacity: 0.65;
+}
+.pressedButtons[disabled]{
+    color: white;
+    background-Color:rgb(54, 52, 52);
+    
+}
 .flagged{
     background-Color:rgb(138, 61, 61);
 }

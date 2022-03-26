@@ -37,6 +37,7 @@ function bg(){
     document.querySelector('body').style.backgroundImage=backgroundImages[randomNum];
 }
 setInterval(bg,5000);
+document.getElementById('start').addEventListener('click',start);
 function newGame(){ // reset all arrays for a new game
     document.getElementById('mineField').innerHTML=''; // remove all buttons from minefield
     buttons=[];
@@ -47,7 +48,7 @@ function newGame(){ // reset all arrays for a new game
     flagcount=0;
     hintCount=0;
     document.getElementById('score').innerHTML=totalMines-flagcount; // print total flags left in input
-    
+    document.getElementById('totale').innerHTML='';
 }
 function hasDuplicates(array) {
 return new Set(array).size !== array.length;
@@ -191,6 +192,7 @@ function start(){
             // button is a variable containing each square respectively  
             // add event listener mouse click to every button
         {
+            document.getElementById(mybutton).disabled=true;
             if(expMines.includes(parseInt(mybutton))){
                 // if(button.innerHTML!="")
                 // return;
@@ -207,21 +209,15 @@ function start(){
                     button.innerHTML='';
                     //after clicking a mine alert you lost and remove added classes and inner text
                     })
-                    function timerClear(){
-                        document.getElementById('sec').innerHTML='0'+0;
-                        document.getElementById('milliSec').innerHTML='0'+'0'+0;
-                        document.getElementById('min').innerHTML='0'+0;
-                        totalMsec=0;
-                        totalSec=0;
-                        totalMin=0;
-                    }
-                    timerClear();
-                    var interval_id = window.setInterval(()=>{}, 99999);
-                    for (var i = 0; i < interval_id; i++)
-                    window.clearInterval(i);
-                    alert('you lost!');
-                    start();
                 }, 500);
+                var interval_id = window.setInterval(()=>{}, 99999);
+                for (var i = 0; i < interval_id; i++)
+                window.clearInterval(i);
+                for(var i=0;i<buttons.length;i++)
+                document.getElementById(i).disabled=true;
+                var totaleTime=document.getElementsByClassName('time').innerText;
+                document.getElementById('totale').display='block';
+                document.getElementById('totale').innerHTML='You lost! ';
             }
             else{
                 
@@ -246,61 +242,79 @@ function start(){
                                     if(firstColumn.includes(parseInt(parseInt(button.id)))){
                                         if(parseInt(button.id)-15>0){
                                             document.getElementById(parseInt(button.id) -15).click();
+                                            document.getElementById(parseInt(button.id) -15).disabled=true;
                                         }
                                         if(parseInt(button.id)-14>0){
                                             document.getElementById(parseInt(button.id) -14).click();
+                                            document.getElementById(parseInt(button.id) -14).disabled=true;
                                         }
                                         if(parseInt(button.id)+1<226){
                                             document.getElementById(parseInt(button.id) +1).click();
+                                            document.getElementById(parseInt(button.id) +1).disabled=true;
                                         }
                                         if(parseInt(button.id)+15<226){
                                             document.getElementById(parseInt(button.id) +15).click();
+                                            document.getElementById(parseInt(button.id) +15).disabled=true;
                                         }
                                         if(parseInt(button.id)+16<226){
                                             document.getElementById(parseInt(button.id) +16).click();
+                                            document.getElementById(parseInt(button.id) -+16).disabled=true;
                                         }
                                     }
                                     else if(lastColumn.includes(parseInt(parseInt(button.id)))){
                                         if(parseInt(button.id)-1>0){
                                             document.getElementById(parseInt(button.id) -1).click();
+                                            document.getElementById(parseInt(button.id) -1).disabled=true;
                                         }
                                         if(parseInt(button.id)+15<226){
                                             document.getElementById(parseInt(button.id) +15).click();
+                                            document.getElementById(parseInt(button.id) +15).disabled=true;
                                         }
                                         if(parseInt(button.id)-15>0){
                                             document.getElementById(parseInt(button.id) -15).click();
+                                            document.getElementById(parseInt(button.id) -15).disabled=true;
                                         }
                                         if(parseInt(button.id)-16>0){
                                             document.getElementById(parseInt(button.id) -16).click();
+                                            document.getElementById(parseInt(button.id) -16).disabled=true;
                                         }
                                         if(parseInt(button.id)+14<226){
                                             document.getElementById(parseInt(button.id) +14).click();
+                                            document.getElementById(parseInt(button.id) +14).disabled=true;
                                         }
                                     }
                                     else{
                                         if(parseInt(button.id)+1<226){
                                             document.getElementById(parseInt(button.id) +1).click();
+                                            document.getElementById(parseInt(button.id) +1).disabled=true;
                                         }
                                         if(parseInt(button.id)-1>0){
                                             document.getElementById(parseInt(button.id) -1).click();
+                                            document.getElementById(parseInt(button.id) -1).disabled=true;
                                         }
                                         if(parseInt(button.id)+15<226){
                                             document.getElementById(parseInt(button.id) +15).click();
+                                            document.getElementById(parseInt(button.id) +15).disabled=true;
                                         }
                                         if(parseInt(button.id)-15>0){
                                             document.getElementById(parseInt(button.id) -15).click();
+                                            document.getElementById(parseInt(button.id) -15).disabled=true;
                                         }
                                         if(parseInt(button.id)+16<226){
                                             document.getElementById(parseInt(button.id) +16).click();
+                                            document.getElementById(parseInt(button.id) +16).disabled=true;
                                         }
                                         if(parseInt(button.id)-16>0){
                                             document.getElementById(parseInt(button.id) -16).click();
+                                            document.getElementById(parseInt(button.id) -16).disabled=true;
                                         }
                                         if(parseInt(button.id)+14<226){
                                             document.getElementById(parseInt(button.id) +14).click();
+                                            document.getElementById(parseInt(button.id) +14).disabled=true;
                                         }
                                         if(parseInt(button.id)-14>0){
                                             document.getElementById(parseInt(button.id) -14).click();
+                                            document.getElementById(parseInt(button.id) -14).disabled=true;
                                         }
                                     }
                                         return; 
@@ -342,21 +356,15 @@ function start(){
             }
             console.log(flaggedMine);
             if(flaggedMine===totalMines){
-                function timerClear(){
-                    document.getElementById('sec').innerHTML='0'+0;
-                    document.getElementById('milliSec').innerHTML='0'+'0'+0;
-                    document.getElementById('min').innerHTML='0'+0;
-                    totalMsec=0;
-                    totalSec=0;
-                    totalMin=0;
-                }
-                timerClear();
                 var interval_id = window.setInterval(()=>{}, 99999);
                 for (var i = 0; i < interval_id; i++)
                 window.clearInterval(i);
-                alert('you win!');
+                var sec=document.getElementById('sec').innerText;
+                var milliSec=document.getElementById('milliSec').innerText;
+                var min=document.getElementById('min').innerText;
+                document.getElementById('totale').display='block';
+                document.getElementById('totale').innerHTML='You Win! Your score:'+min+":"+sec+":"+milliSec;
                 winAudio.play();
-                start();
             }
             document.getElementById('score').value=totalMines-flagcount; // print total flags left in input
         });
