@@ -236,9 +236,58 @@ function start(){
                     button.classList.add('pressedButtons');
                     revealEmpty();
                     function revealEmpty(){
+                        if(firstColumn.includes(parseInt(parseInt(button.id)))){
+                            if(parseInt(button.id)-30>0){
+                                document.getElementById(parseInt(button.id) -30).click();
+                                document.getElementById(parseInt(button.id) -30).disabled=true;
+                            }
+                            if(parseInt(button.id)-29>0){
+                                document.getElementById(parseInt(button.id) -29).click();
+                                document.getElementById(parseInt(button.id) -29).disabled=true;
+                            }
                             if(parseInt(button.id)+1<totalButtons){
                                 document.getElementById(parseInt(button.id) +1).click();
                                 document.getElementById(parseInt(button.id) +1).disabled=true;
+                            }
+                            if(parseInt(button.id)+30<totalButtons){
+                                document.getElementById(parseInt(button.id) +30).click();
+                                document.getElementById(parseInt(button.id) +30).disabled=true;
+                            }
+                            if(parseInt(button.id)+31<totalButtons){
+                                document.getElementById(parseInt(button.id) +31).click();
+                                document.getElementById(parseInt(button.id) -+31).disabled=true;
+                            }
+                        }
+                        else if(lastColumn.includes(parseInt(parseInt(button.id)))){
+                            if(parseInt(button.id)-1>0){
+                                document.getElementById(parseInt(button.id) -1).click();
+                                document.getElementById(parseInt(button.id) -1).disabled=true;
+                            }
+                            if(parseInt(button.id)+30<totalButtons){
+                                document.getElementById(parseInt(button.id) +30).click();
+                                document.getElementById(parseInt(button.id) +30).disabled=true;
+                            }
+                            if(parseInt(button.id)-30>0){
+                                document.getElementById(parseInt(button.id) -30).click();
+                                document.getElementById(parseInt(button.id) -30).disabled=true;
+                            }
+                            if(parseInt(button.id)-31>0){
+                                document.getElementById(parseInt(button.id) -31).click();
+                                document.getElementById(parseInt(button.id) -31).disabled=true;
+                            }
+                            if(parseInt(button.id)+29<totalButtons){
+                                document.getElementById(parseInt(button.id) +29).click();
+                                document.getElementById(parseInt(button.id) +29).disabled=true;
+                            }
+                        }
+                        else{
+                            if(parseInt(button.id)+1<totalButtons){
+                                document.getElementById(parseInt(button.id) +1).click();
+                                document.getElementById(parseInt(button.id) +1).disabled=true;
+                            }
+                            if(parseInt(button.id)-1>0){
+                                document.getElementById(parseInt(button.id) -1).click();
+                                document.getElementById(parseInt(button.id) -1).disabled=true;
                             }
                             if(parseInt(button.id)+30<totalButtons){
                                 document.getElementById(parseInt(button.id) +30).click();
@@ -252,32 +301,20 @@ function start(){
                                 document.getElementById(parseInt(button.id) +31).click();
                                 document.getElementById(parseInt(button.id) +31).disabled=true;
                             }
+                            if(parseInt(button.id)-31>0){
+                                document.getElementById(parseInt(button.id) -31).click();
+                                document.getElementById(parseInt(button.id) -31).disabled=true;
+                            }
+                            if(parseInt(button.id)+29<totalButtons){
+                                document.getElementById(parseInt(button.id) +29).click();
+                                document.getElementById(parseInt(button.id) +29).disabled=true;
+                            }
                             if(parseInt(button.id)-29>0){
                                 document.getElementById(parseInt(button.id) -29).click();
                                 document.getElementById(parseInt(button.id) -29).disabled=true;
                             }
-                            else if(lastColumn.includes(parseInt(button.id))){
-                                if(parseInt(button.id)-1>0){
-                                    document.getElementById(button.id -1).click();
-                                    document.getElementById(parseInt(button.id) -1).disabled=true;
-                                }
-                                if(parseInt(button.id)+30<totalButtons){
-                                    document.getElementById(button.id +30).click();
-                                    document.getElementById(parseInt(button.id) +30).disabled=true;
-                                }
-                                if(parseInt(button.id)-30>0){
-                                    document.getElementById(button.id -30).click();
-                                    document.getElementById(parseInt(button.id) -30).disabled=true;
-                                }
-                                if(parseInt(button.id)-31>0){
-                                    document.getElementById(button.id -31).click();
-                                    document.getElementById(parseInt(button.id) -31).disabled=true;
-                                }
-                                if(parseInt(button.id)+29<totalButtons){
-                                    document.getElementById(button.id +29).click();
-                                    document.getElementById(parseInt(button.id) +29).disabled=true;
-                                }
-                            }
+                        }
+                            return; 
                         }
                     }
             }
