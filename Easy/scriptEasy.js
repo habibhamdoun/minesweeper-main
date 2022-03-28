@@ -38,43 +38,8 @@ function bg(){
 document.getElementById('start').addEventListener('click',start);
 setInterval(bg,5000);
 document.getElementById('score').innerHTML=score; // print total flags left in input
-function newGame(){ // reset all arrays for a new game
-    document.getElementById('mineField').innerHTML=''; // remove all buttons from minefield
-    buttons=[];
-    expMines=[];
-    emptyCount=[];
-    finalCount=[];
-    count=0;
-    flagcount=0;
-    hintCount=0;
-    document.getElementById('score').innerHTML=score; // print total flags left in input
-    function timerClear(){
-        document.getElementById('sec').innerHTML='0'+0;
-        document.getElementById('milliSec').innerHTML='0'+'0'+0;
-        document.getElementById('min').innerHTML='0'+0;
-        totalMsec=0;
-        totalSec=0;
-        totalMin=0;
-    }
-    timerClear();
-    var interval_id = window.setInterval(()=>{}, 99999);
-    for (var i = 0; i < interval_id; i++)
-    window.clearInterval(i);
-    document.getElementById('totale').innerHTML='';
-}
-function start(){
-        newGame();
-        for(let i=0;i<totalButtons;i++){
-            let square = document.createElement('button'); // create buttons
-            document.getElementById('mineField').appendChild(square); // make buttons in mine fields
-            square.setAttribute('class','mineButtons'); // add class to buttons
-            square.setAttribute('id',i); // add id to buttons with name  i
-            buttons.push(square.id); // add buttons id to array names buttons
-    }
-    buttons.forEach(function(mybutton){
-        var button=document.getElementById(mybutton);
-        button.addEventListener('click',function(){
-            var milliSec=document.getElementById('milliSec');
+document.getElementById('start').addEventListener('click',function(){
+    var milliSec=document.getElementById('milliSec');
             var sec=document.getElementById('sec');
             var min=document.getElementById('min');
             totalSec=0;
@@ -85,6 +50,7 @@ function start(){
                 ++totalMsec
                 if(totalMsec<10)milliSec.innerHTML='0'+'0'+totalMsec;
                 else if(totalMsec<90)milliSec.innerHTML='0'+totalMsec;
+                else milliSec.innerHTML='0'+totalMsec;
                 if(totalMsec==100){
                     totalMsec=0;
                     ++totalSec
@@ -98,8 +64,31 @@ function start(){
                     else min.innerHTML=totalMin;
                 }
             }
-        },{once:true})
-    });
+});
+function newGame(){ // reset all arrays for a new game
+    document.getElementById('min').innerText='00';
+    document.getElementById('sec').innerText='00';
+    document.getElementById('milliSec').innerText='000';
+    document.getElementById('mineField').innerHTML=''; // remove all buttons from minefield
+    buttons=[];
+    expMines=[];
+    emptyCount=[];
+    finalCount=[];
+    count=0;
+    flagcount=0;
+    hintCount=0;
+    document.getElementById('score').innerHTML=totalMines-flagcount; // print total flags left in input
+    document.getElementById('totale').innerHTML='';
+}
+function start(){
+        newGame();
+        for(let i=0;i<totalButtons;i++){
+            let square = document.createElement('button'); // create buttons
+            document.getElementById('mineField').appendChild(square); // make buttons in mine fields
+            square.setAttribute('class','mineButtons'); // add class to buttons
+            square.setAttribute('id',i); // add id to buttons with name  i
+            buttons.push(square.id); // add buttons id to array names buttons
+    }
     for(let i=0;i<totalMines;i++){
         while(expMines.length<totalMines){
         let expMine= Math.floor(Math.random() * buttons.length);
@@ -405,4 +394,4 @@ function play(event){
         window.open('../comic page 1/comicIndex.html')
     }
 }
-start();
+// start();
