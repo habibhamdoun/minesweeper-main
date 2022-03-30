@@ -305,7 +305,7 @@ function start(){
                                 document.getElementById(parseInt(button.id) +8).click();
                                 document.getElementById(parseInt(button.id )+8).disabled=true;
                             }
-                            if(parseInt(button.id)-9>0){
+                            if(parseInt(button.id)-8>0){
                                 document.getElementById(parseInt(button.id )-8).click();
                                 document.getElementById(parseInt(button.id )-8).disabled=true;
                             }
