@@ -74,6 +74,7 @@ function newGame(){ // reset all arrays for a new game
     document.getElementById('sec').innerText='00';
     document.getElementById('milliSec').innerText='000';
     document.getElementById('mineField').innerHTML=''; // remove all buttons from minefield
+    document.getElementById('start').innerHTML='Start';
     buttons=[];
     expMines=[];
     emptyCount=[];
@@ -231,7 +232,8 @@ function start(){
                 document.getElementById(i).disabled=true;
                 var totaleTime=document.getElementsByClassName('time').innerText;
                 document.getElementById('totale').display='block';
-                document.getElementById('totale').innerHTML='You lost! ';
+                document.getElementById('totale').innerHTML='You lost!:(';
+                document.getElementById('start').innerHTML='Restart';
             }
             else{
                 
@@ -373,6 +375,7 @@ function start(){
             var min=document.getElementById('min').innerText;
             document.getElementById('totale').display='block';
             document.getElementById('totale').innerHTML='You Win! Your score:'+min+":"+sec+":"+milliSec;
+            document.getElementById('start').innerHTML='Restart';
             winAudio.play();
             
         }
@@ -420,6 +423,7 @@ function start(){
                 var min=document.getElementById('min').innerText;
                 document.getElementById('totale').display='block';
                 document.getElementById('totale').innerHTML='You Win! Your score:'+min+":"+sec+":"+milliSec;
+                document.getElementById('start').innerHTML='Restart';
                 winAudio.play();
             }
             document.getElementById('score').value=totalMines-flagcount; // print total flags left in input
