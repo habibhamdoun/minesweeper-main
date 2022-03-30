@@ -45,6 +45,9 @@ document.getElementById('start').addEventListener('click',function(){
             totalSec=0;
             totalMin=0
             totalMsec=0;
+            var interval_id = window.setInterval(()=>{}, 99999);
+                for (var i = 0; i < interval_id; i++)
+                window.clearInterval(i);
             const timerStart=setInterval(startTimer,10);
             function startTimer(){
                 ++totalMsec

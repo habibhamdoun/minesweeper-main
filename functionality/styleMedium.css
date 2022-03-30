@@ -139,6 +139,7 @@ label{
     .mineButtons{
         height: 23px;
         width: 23px;
+        font-size: 10px;
     }
     #aboveContainer{
         width: 24rem;

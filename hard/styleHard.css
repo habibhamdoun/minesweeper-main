@@ -7,7 +7,7 @@ body{
     height: 150vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     transition: 2s;
@@ -129,5 +129,6 @@ label{
     .mineButtons{
         height: 23px;
         width: 23px;
+        font-size: 10px;
     }
 } 
