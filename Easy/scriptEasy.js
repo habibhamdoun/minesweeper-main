@@ -191,20 +191,7 @@ function start(){
             // button is a variable containing each square respectively  
             // add event listener mouse click to every button
         {
-            if(button.classList.contains("flagged")){
-                button.innerHTML='';
-                    button.classList.remove('flagged');
-                    button.classList.add('pressedButtons')
-                    flagcount--
-                    flagRemoved.play();
-                    if(expMines.includes(parseInt(button.id))){
-                        flagcount--
-                        flaggedMine--
-                    }
-                    //if button clicked already has a flag remove flag
-                    return;
-            }
-
+            
             if(expMines.includes(parseInt(mybutton))){
                 // if(button.innerHTML!="")
                 // return;
@@ -342,13 +329,14 @@ function start(){
     buttons.forEach(function(mybutton){
         flagcount=0
         var button=document.getElementById(mybutton);
+        var before=button.innerHTML;
         button.addEventListener('auxclick',function(){
-            if(flagcount==totalMines){
+            if(flagcount==totalMines && !button.classList.contains('flagged')){
                 return;
                 //if you reached max limit of flags skip this function
             }
             if(button.classList.contains('flagged')){
-                    button.innerHTML='';
+                    button.innerHTML=before;
                     button.classList.remove('flagged');
                     flagcount--
                     flagRemoved.play();
@@ -359,7 +347,7 @@ function start(){
                     //if button clicked already has a flag remove flag
                     return;
             }
-            else{
+            else{          
                 button.innerHTML='<i class="fa-solid fa-flag"></i>';
                 button.classList.add('flagged');
                 flagcount++;
