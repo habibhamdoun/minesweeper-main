@@ -26,6 +26,7 @@ var hintCount=0;
 var totalSec=0;
 var totalMsec=0;
 var totalMin=0;
+var switchMode=document.getElementById('switch');
 document.getElementById('score').innerHTML=score; // print total flags left in input
 var bg1='radial-gradient(circle, yellow, orange)';
 var bg2='radial-gradient(circle, lightblue, deepskyblue)';
@@ -85,6 +86,13 @@ function newGame(){ // reset all arrays for a new game
     document.getElementById('totale').innerHTML='';
     document.getElementById('hint').innerHTML=totalHints-hintCount;
 }
+switchMode.addEventListener('click',function(){
+    if(switchMode.innerHTML=='<i class="fa-solid fa-bomb"></i>'){
+        switchMode.innerHTML='<i class="fa-solid fa-flag"></i>'
+    }
+    else switchMode.innerHTML='<i class="fa-solid fa-bomb"></i>'
+
+})
 function start(){
         newGame();
         for(let i=0;i<totalButtons;i++){
@@ -195,7 +203,7 @@ function start(){
             // button is a variable containing each square respectively  
             // add event listener mouse click to every button
         {
-            document.getElementById(mybutton).disabled=true;
+            if(switchMode.innerHTML=='<i class="fa-solid fa-bomb"></i>'){
             if(expMines.includes(parseInt(mybutton))){
                 // if(button.innerHTML!="")
                 // return;
@@ -329,6 +337,48 @@ function start(){
                         }
                         
                     }
+                }
+            }
+            else{
+                if(flagcount==totalMines && !button.classList.contains('flagged')){
+                    return;
+                    //if you reached max limit of flags skip this function
+                }
+                if(button.classList.contains('flagged')){
+                        button.innerHTML='';
+                        button.classList.remove('flagged');
+                        flagcount--
+                        flagRemoved.play();
+                        if(expMines.includes(parseInt(button.id))){
+                            flaggedMine--
+                        }
+                        //if button clicked already has a flag remove flag
+                        return;
+                }
+                else{          
+                    button.innerHTML='<i class="fa-solid fa-flag"></i>';
+                    button.classList.add('flagged');
+                    flagcount++;
+                    flagAudio.play();
+                    //if button clicked doesnt have flag add flag and flag class
+                }
+                if(expMines.includes(parseInt(button.id))){
+                    flaggedMine++
+                }
+                console.log(flaggedMine);
+                if(flaggedMine===totalMines){
+                    var interval_id = window.setInterval(()=>{}, 99999);
+                    for (var i = 0; i < interval_id; i++)
+                    window.clearInterval(i);
+                    var sec=document.getElementById('sec').innerText;
+                    var milliSec=document.getElementById('milliSec').innerText;
+                    var min=document.getElementById('min').innerText;
+                    document.getElementById('totale').display='block';
+                    document.getElementById('totale').innerHTML='You Win! Your score:'+min+":"+sec+":"+milliSec;
+                    winAudio.play();
+                    
+                }
+                document.getElementById('score').innerText=totalMines-flagcount; // print total flags left in input
             }
         })
     }, false);

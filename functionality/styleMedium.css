@@ -131,6 +131,14 @@ label{
 .icon{
     display: none;
 }
+#switch{
+    display:inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.9rem;
+    margin-bottom: 0.9rem;
+    border-radius: 100%;
+}
 @media screen and (min-width:300px) and (max-width:600px){
     #container{
         width: 23.5rem;
