@@ -239,34 +239,35 @@ function start(){
                     button.classList.add('pressedButtons');
                     revealEmpty();
                             function revealEmpty(){
-                                    if(firstColumn.includes(parseInt(parseInt(button.id)))){
-                                        if(parseInt(button.id)-15>0){
-                                            document.getElementById(parseInt(button.id) -15).click();
-                                            document.getElementById(parseInt(button.id) -15).disabled=true;
-                                        }
-                                        if(parseInt(button.id)-14>0){
-                                            document.getElementById(parseInt(button.id) -14).click();
-                                            document.getElementById(parseInt(button.id) -14).disabled=true;
-                                        }
-                                        if(parseInt(button.id)+1<226){
-                                            document.getElementById(parseInt(button.id) +1).click();
-                                            document.getElementById(parseInt(button.id) +1).disabled=true;
-                                        }
-                                        if(parseInt(button.id)+15<226){
-                                            document.getElementById(parseInt(button.id) +15).click();
-                                            document.getElementById(parseInt(button.id) +15).disabled=true;
-                                        }
-                                        if(parseInt(button.id)+16<226){
-                                            document.getElementById(parseInt(button.id) +16).click();
-                                            document.getElementById(parseInt(button.id) -+16).disabled=true;
-                                        }
+                                if(firstColumn.includes(parseInt(button.id))){
+
+                                    if(parseInt(button.id)+1<totalButtons){
+                                        document.getElementById(parseInt(button.id )+1).click();
+                                        document.getElementById(parseInt(button.id )+1).disabled=true;
+                                    }
+                                    if(parseInt(button.id)+16<totalButtons){
+                                        document.getElementById(parseInt(button.id )+16).click();
+                                        document.getElementById(parseInt(button.id )+16).disabled=true;
+                                    }
+                                    if(parseInt(button.id)+15<totalButtons){
+                                        document.getElementById(parseInt(button.id) +15).click();
+                                        document.getElementById(parseInt(button.id )+15).disabled=true;
+                                    }
+                                    if(parseInt(button.id)-15>0){
+                                        document.getElementById(parseInt(button.id )-15).click();
+                                        document.getElementById(parseInt(button.id )-15).disabled=true;
+                                    }
+                                    if(parseInt(button.id)-14>0){
+                                        document.getElementById(parseInt(button.id) -14).click();
+                                        document.getElementById(parseInt(button.id )-14).disabled=true;
+                                    }
                                     }
                                     else if(lastColumn.includes(parseInt(parseInt(button.id)))){
                                         if(parseInt(button.id)-1>0){
                                             document.getElementById(parseInt(button.id) -1).click();
                                             document.getElementById(parseInt(button.id) -1).disabled=true;
                                         }
-                                        if(parseInt(button.id)+15<226){
+                                        if(parseInt(button.id)+15<totalButtons){
                                             document.getElementById(parseInt(button.id) +15).click();
                                             document.getElementById(parseInt(button.id) +15).disabled=true;
                                         }
@@ -278,13 +279,13 @@ function start(){
                                             document.getElementById(parseInt(button.id) -16).click();
                                             document.getElementById(parseInt(button.id) -16).disabled=true;
                                         }
-                                        if(parseInt(button.id)+14<226){
+                                        if(parseInt(button.id)+14<totalButtons){
                                             document.getElementById(parseInt(button.id) +14).click();
                                             document.getElementById(parseInt(button.id) +14).disabled=true;
                                         }
                                     }
                                     else{
-                                        if(parseInt(button.id)+1<226){
+                                        if(parseInt(button.id)+1<totalButtons){
                                             document.getElementById(parseInt(button.id) +1).click();
                                             document.getElementById(parseInt(button.id) +1).disabled=true;
                                         }
@@ -292,7 +293,7 @@ function start(){
                                             document.getElementById(parseInt(button.id) -1).click();
                                             document.getElementById(parseInt(button.id) -1).disabled=true;
                                         }
-                                        if(parseInt(button.id)+15<226){
+                                        if(parseInt(button.id)+15<totalButtons){
                                             document.getElementById(parseInt(button.id) +15).click();
                                             document.getElementById(parseInt(button.id) +15).disabled=true;
                                         }
@@ -300,7 +301,7 @@ function start(){
                                             document.getElementById(parseInt(button.id) -15).click();
                                             document.getElementById(parseInt(button.id) -15).disabled=true;
                                         }
-                                        if(parseInt(button.id)+16<226){
+                                        if(parseInt(button.id)+16<totalButtons){
                                             document.getElementById(parseInt(button.id) +16).click();
                                             document.getElementById(parseInt(button.id) +16).disabled=true;
                                         }
@@ -308,7 +309,7 @@ function start(){
                                             document.getElementById(parseInt(button.id) -16).click();
                                             document.getElementById(parseInt(button.id) -16).disabled=true;
                                         }
-                                        if(parseInt(button.id)+14<226){
+                                        if(parseInt(button.id)+14<totalButtons){
                                             document.getElementById(parseInt(button.id) +14).click();
                                             document.getElementById(parseInt(button.id) +14).disabled=true;
                                         }
