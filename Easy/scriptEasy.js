@@ -76,6 +76,7 @@ function newGame(){ // reset all arrays for a new game
     finalCount=[];
     count=0;
     flagcount=0;
+    flaggedMine=0;
     hintCount=0;
     document.getElementById('score').innerHTML=totalMines-flagcount; // print total flags left in input
     document.getElementById('totale').innerHTML='';
@@ -341,7 +342,6 @@ function start(){
                     flagcount--
                     flagRemoved.play();
                     if(expMines.includes(parseInt(button.id))){
-                        flagcount--
                         flaggedMine--
                     }
                     //if button clicked already has a flag remove flag
