@@ -37,6 +37,7 @@ function bg(){
     document.querySelector('body').style.backgroundImage=backgroundImages[randomNum];
 }
 setInterval(bg,5000);
+document.getElementById('hint').innerHTML=totalHints-hintCount;
 document.getElementById('start').addEventListener('click',start);
 document.getElementById('start').addEventListener('click',function(){
     var milliSec=document.getElementById('milliSec');
@@ -82,6 +83,7 @@ function newGame(){ // reset all arrays for a new game
     hintCount=0;
     document.getElementById('score').innerHTML=totalMines-flagcount; // print total flags left in input
     document.getElementById('totale').innerHTML='';
+    document.getElementById('hint').innerHTML=totalHints-hintCount;
 }
 function hasDuplicates(array) {
 return new Set(array).size !== array.length;
@@ -374,8 +376,8 @@ function start(){
         });
         
     })
-    document.getElementById('hint').innerHTML=totalHints-hintCount;
-    document.getElementById('hint').addEventListener('click',function(){
+    document.getElementById('hint').addEventListener('click',function hints(){
+        document.getElementById('hint').innerHTML=totalHints-hintCount;
         if(hintCount===totalHints){
             return;
         }
@@ -385,6 +387,7 @@ function start(){
                 document.getElementById(parseInt(expMines[hintMine])).innerHTML='<i class="fa-solid fa-bomb"></i>';
                 hintCount++
             }
+            else hints();
             return console.log(hintCount);
             
         }

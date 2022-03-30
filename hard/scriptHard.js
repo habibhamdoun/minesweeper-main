@@ -37,6 +37,7 @@ function bg(){
     document.querySelector('body').style.backgroundImage=backgroundImages[randomNum];
 }
 setInterval(bg,5000);
+document.getElementById('hint').innerHTML=totalHints-hintCount;
 document.getElementById('start').addEventListener('click',start);
 document.getElementById('start').addEventListener('click',function(){
     var milliSec=document.getElementById('milliSec');
@@ -82,6 +83,7 @@ function newGame(){ // reset all arrays for a new game
     hintCount=0;
     document.getElementById('score').innerHTML=totalMines-flagcount; // print total flags left in input
     document.getElementById('totale').innerHTML='';
+    document.getElementById('hint').innerHTML=totalHints-hintCount;
 }
 function start(){
         newGame();
