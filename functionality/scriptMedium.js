@@ -192,6 +192,19 @@ function start(){
             // button is a variable containing each square respectively  
             // add event listener mouse click to every button
         {
+            if(button.classList.contains("flagged")){
+                button.innerHTML='';
+                    button.classList.remove('flagged');
+                    button.classList.add('pressedButtons')
+                    flagcount--
+                    flagRemoved.play();
+                    if(expMines.includes(parseInt(button.id))){
+                        flagcount--
+                        flaggedMine--
+                    }
+                    //if button clicked already has a flag remove flag
+                    return;
+            }
             document.getElementById(mybutton).disabled=true;
             if(expMines.includes(parseInt(mybutton))){
                 // if(button.innerHTML!="")
@@ -240,7 +253,6 @@ function start(){
                     revealEmpty();
                             function revealEmpty(){
                                 if(firstColumn.includes(parseInt(button.id))){
-
                                     if(parseInt(button.id)+1<totalButtons){
                                         document.getElementById(parseInt(button.id )+1).click();
                                         document.getElementById(parseInt(button.id )+1).disabled=true;
