@@ -98,6 +98,8 @@ label{
 }
 .flagged{
     background-Color:rgb(138, 61, 61);
+    color: white;
+    font-size: 15px;
 }
 .safeButton{
     height:32px;
