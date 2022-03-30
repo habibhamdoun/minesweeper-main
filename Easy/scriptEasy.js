@@ -8,7 +8,7 @@ var buttons=[];// buttons is an array that contains all the buttons
 var count=0; // how many mines nearby
 var finalCount=[];// array that hols the total of counts on each button
 var i=0; // var that iterates over every button
-var totalMines=9; // total number of mines
+var totalMines=7; // total number of mines
 var expMines=[]; // expMines is an array with explosive mines
 var emptyCount=[];// contains safe buttons 
 var lastColumn=[];// buttons from last row
@@ -379,9 +379,12 @@ function start(){
         }
         else{
             let hintMine= Math.floor(Math.random() * totalMines);
-            document.getElementById(parseInt(expMines[hintMine])).innerHTML='<i class="fa-solid fa-bomb"></i>';
-            hintCount++
-            console.log(hintCount)
+            if(!document.getElementById(parseInt(expMines[hintMine])).classList.contains('flagged')){
+                document.getElementById(parseInt(expMines[hintMine])).innerHTML='<i class="fa-solid fa-bomb"></i>';
+                hintCount++
+            }
+            return console.log(hintCount);
+            
         }
         
     })

@@ -377,13 +377,16 @@ function start(){
         }
         else{
             let hintMine= Math.floor(Math.random() * totalMines);
-            document.getElementById(parseInt(expMines[hintMine])).innerHTML='<i class="fa-solid fa-bomb"></i>';
-            hintCount++
+            if(!document.getElementById(parseInt(expMines[hintMine])).classList.contains('flagged')){
+                document.getElementById(parseInt(expMines[hintMine])).innerHTML='<i class="fa-solid fa-bomb"></i>';
+                hintCount++
+            }
+            return console.log(hintCount);
+            
         }
         
-
-
     })
+    
 };
 document.addEventListener('click',play);
 function play(event){
