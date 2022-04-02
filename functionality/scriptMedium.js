@@ -199,6 +199,53 @@ function start(){
                 //buttons with no mines nearby put in array called emptycount
             }
         }
+        buttons.forEach(function(mybutton){
+            flagcount=0
+            var button=document.getElementById(mybutton);
+            var before=button.innerHTML;
+            button.addEventListener('auxclick',function(){
+                if(flagcount==totalMines && !button.classList.contains('flagged')){
+                    return;
+                    //if you reached max limit of flags skip this function
+                }
+                if(button.classList.contains('flagged')){
+                        button.innerHTML=before;
+                        button.classList.remove('flagged');
+                        flagcount--
+                        flagRemoved.play();
+                        if(expMines.includes(parseInt(button.id))){
+                            flaggedMine--
+                        }
+                        //if button clicked already has a flag remove flag
+                        return;
+                }
+                else{
+                    button.innerHTML='<i class="fa-solid fa-flag"></i>';
+                    button.classList.add('flagged');
+                    flagcount++;
+                    flagAudio.play();
+                    //if button clicked doesnt have flag add flag and flag class
+                }
+                if(expMines.includes(parseInt(button.id))){
+                    flaggedMine++
+                }
+                console.log(flaggedMine);
+                if(flaggedMine===totalMines){
+                    var interval_id = window.setInterval(()=>{}, 99999);
+                    for (var i = 0; i < interval_id; i++)
+                    window.clearInterval(i);
+                    var sec=document.getElementById('sec').innerText;
+                    var milliSec=document.getElementById('milliSec').innerText;
+                    var min=document.getElementById('min').innerText;
+                    document.getElementById('totale').display='block';
+                    document.getElementById('totale').innerHTML='You Win! Your score:'+min+":"+sec+":"+milliSec;
+                    document.getElementById('start').innerHTML='Restart';
+                    winAudio.play();
+                }
+                document.getElementById('score').value=totalMines-flagcount; // print total flags left in input
+            });
+            
+        })
         console.log(emptyCount);
         console.log('emptyCount');
         window.onload=buttons.forEach(function (mybutton) {
@@ -254,86 +301,127 @@ function start(){
                     // if button not close to mines put empty space
                     button.classList.add('pressedButtons');
                     revealEmpty();
-                            function revealEmpty(){
-                                if(firstColumn.includes(parseInt(button.id))){
-                                    if(parseInt(button.id)+1<totalButtons){
-                                        document.getElementById(parseInt(button.id )+1).click();
-                                        document.getElementById(parseInt(button.id )+1).disabled=true;
-                                    }
-                                    if(parseInt(button.id)+16<totalButtons){
-                                        document.getElementById(parseInt(button.id )+16).click();
-                                        document.getElementById(parseInt(button.id )+16).disabled=true;
-                                    }
-                                    if(parseInt(button.id)+15<totalButtons){
-                                        document.getElementById(parseInt(button.id) +15).click();
-                                        document.getElementById(parseInt(button.id )+15).disabled=true;
-                                    }
-                                    if(parseInt(button.id)-15>0){
-                                        document.getElementById(parseInt(button.id )-15).click();
-                                        document.getElementById(parseInt(button.id )-15).disabled=true;
-                                    }
-                                    if(parseInt(button.id)-14>0){
-                                        document.getElementById(parseInt(button.id) -14).click();
-                                        document.getElementById(parseInt(button.id )-14).disabled=true;
-                                    }
-                                    }
-                                    else if(lastColumn.includes(parseInt(parseInt(button.id)))){
-                                        if(parseInt(button.id)-1>0){
-                                            document.getElementById(parseInt(button.id) -1).click();
-                                            document.getElementById(parseInt(button.id) -1).disabled=true;
-                                        }
-                                        if(parseInt(button.id)+15<totalButtons){
-                                            document.getElementById(parseInt(button.id) +15).click();
-                                            document.getElementById(parseInt(button.id) +15).disabled=true;
-                                        }
-                                        if(parseInt(button.id)-15>0){
-                                            document.getElementById(parseInt(button.id) -15).click();
-                                            document.getElementById(parseInt(button.id) -15).disabled=true;
-                                        }
-                                        if(parseInt(button.id)-16>0){
-                                            document.getElementById(parseInt(button.id) -16).click();
-                                            document.getElementById(parseInt(button.id) -16).disabled=true;
-                                        }
-                                        if(parseInt(button.id)+14<totalButtons){
-                                            document.getElementById(parseInt(button.id) +14).click();
-                                            document.getElementById(parseInt(button.id) +14).disabled=true;
-                                        }
-                                    }
-                                    else{
-                                        if(parseInt(button.id)+1<totalButtons){
-                                            document.getElementById(parseInt(button.id) +1).click();
-                                            document.getElementById(parseInt(button.id) +1).disabled=true;
-                                        }
-                                        if(parseInt(button.id)-1>0){
-                                            document.getElementById(parseInt(button.id) -1).click();
-                                            document.getElementById(parseInt(button.id) -1).disabled=true;
-                                        }
-                                        if(parseInt(button.id)+15<totalButtons){
-                                            document.getElementById(parseInt(button.id) +15).click();
-                                            document.getElementById(parseInt(button.id) +15).disabled=true;
-                                        }
-                                        if(parseInt(button.id)-15>0){
-                                            document.getElementById(parseInt(button.id) -15).click();
-                                            document.getElementById(parseInt(button.id) -15).disabled=true;
-                                        }
-                                        if(parseInt(button.id)+16<totalButtons){
-                                            document.getElementById(parseInt(button.id) +16).click();
-                                            document.getElementById(parseInt(button.id) +16).disabled=true;
-                                        }
-                                        if(parseInt(button.id)-16>0){
-                                            document.getElementById(parseInt(button.id) -16).click();
-                                            document.getElementById(parseInt(button.id) -16).disabled=true;
-                                        }
-                                        if(parseInt(button.id)+14<totalButtons){
-                                            document.getElementById(parseInt(button.id) +14).click();
-                                            document.getElementById(parseInt(button.id) +14).disabled=true;
-                                        }
-                                        if(parseInt(button.id)-14>0){
-                                            document.getElementById(parseInt(button.id) -14).click();
-                                            document.getElementById(parseInt(button.id) -14).disabled=true;
-                                        }
-                                    }
-                                        return; 
+                    function revealEmpty(){
+                        if(firstColumn.includes(parseInt(button.id))){
+
+                            if(parseInt(button.id)+1<totalButtons){
+                                if(!document.getElementById(parseInt(button.id )+1).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id )+1).click();
+                                    document.getElementById(parseInt(button.id )+1).disabled=true;
+                                }
+                                
+                            }
+                            if(parseInt(button.id)+16<totalButtons){
+                                if(!document.getElementById(parseInt(button.id )+16).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id )+16).click();
+                                    document.getElementById(parseInt(button.id )+16).disabled=true;
+                                }
+                            }
+                            if(parseInt(button.id)+15<totalButtons){
+                                if(!document.getElementById(parseInt(button.id )+15).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id) +15).click();
+                                    document.getElementById(parseInt(button.id )+15).disabled=true;
+                                }
+                            }
+                            if(parseInt(button.id)-15>0){
+                                if(!document.getElementById(parseInt(button.id )-15).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id )-15).click();
+                                    document.getElementById(parseInt(button.id )-15).disabled=true;
+                                }
+                            }
+                            if(parseInt(button.id)-14>0){
+                                if(!document.getElementById(parseInt(button.id )-14).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id) -14).click();
+                                    document.getElementById(parseInt(button.id )-14).disabled=true;
+                                }
+                            }
+                        }
+                        else if(lastColumn.includes(parseInt(button.id))){
+
+                            if(parseInt(button.id)-16>0){
+                                if(!document.getElementById(parseInt(button.id )-16).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id) -16).click();
+                                    document.getElementById(parseInt(button.id )-16).disabled=true;
+                                }
+                            }
+                            if(parseInt(button.id)+15<totalButtons){
+                                if(!document.getElementById(parseInt(button.id )+15).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id) +15).click();
+                                    document.getElementById(parseInt(button.id )+15).disabled=true;
+                                }
+                            }
+                            if(parseInt(button.id)-15>0){
+                                if(!document.getElementById(parseInt(button.id )-15).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id )-15).click();
+                                    document.getElementById(parseInt(button.id )-15).disabled=true;
+                                }
+                            }
+                            if(parseInt(button.id)+14<totalButtons){
+                                if(!document.getElementById(parseInt(button.id )+14).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id) +14).click();
+                                }
+                                }
+                            if(parseInt(button.id)-1<totalButtons){
+                                if(!document.getElementById(parseInt(button.id )-1).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id )-1).click();
+                                    document.getElementById(parseInt(button.id )-1).disabled=true;
+                                }
+                            }
+                        }
+                        else{
+                            
+                            if(parseInt(button.id)+1<totalButtons){
+                                if(!document.getElementById(parseInt(button.id )+1).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id )+1).click();
+                                    document.getElementById(parseInt(button.id )+1).disabled=true;
+                                }
+                            }
+                            if(parseInt(button.id)-1>0){
+                                if(!document.getElementById(parseInt(button.id )-1).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id) -1).click();
+                                    document.getElementById(parseInt(button.id )-1).disabled=true;
+                                }
+
+                            }
+                            if(parseInt(button.id)+16<totalButtons){
+                                if(!document.getElementById(parseInt(button.id )+16).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id )+16).click();
+                                    document.getElementById(parseInt(button.id )+16).disabled=true;
+                                }
+                            }
+                            if(parseInt(button.id)-16>0){
+                                if(!document.getElementById(parseInt(button.id )-16).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id) -16).click();
+                                    document.getElementById(parseInt(button.id )-16).disabled=true
+                                }
+
+                            }
+                            if(parseInt(button.id)+15<totalButtons){
+                                if(!document.getElementById(parseInt(button.id )+15).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id) +15).click();
+                                    document.getElementById(parseInt(button.id )+15).disabled=true;
+                                }
+                            }
+                            if(parseInt(button.id)-15>0){
+                                if(!document.getElementById(parseInt(button.id )-15).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id )-15).click();
+                                    document.getElementById(parseInt(button.id )-15).disabled=true;
+                                }
+                            }
+                            if(parseInt(button.id)+14<totalButtons){
+                                if(!document.getElementById(parseInt(button.id )+14).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id) +14).click();
+                                    document.getElementById(parseInt(button.id )+14).disabled=true;
+                                }
+                            }
+                            if(parseInt(button.id)-14>0){
+                                if(!document.getElementById(parseInt(button.id )-14).classList.contains('flagged')){
+                                    document.getElementById(parseInt(button.id) -14).click();
+                                    document.getElementById(parseInt(button.id )-14).disabled=true;
+                                }
+                            }
+                        }
+                            return; 
                     
                 }
             }
@@ -383,53 +471,6 @@ function start(){
     }
     })
 }, false);
-    buttons.forEach(function(mybutton){
-        flagcount=0
-        var button=document.getElementById(mybutton);
-        var before=button.innerHTML;
-        button.addEventListener('auxclick',function(){
-            if(flagcount==totalMines && !button.classList.contains('flagged')){
-                return;
-                //if you reached max limit of flags skip this function
-            }
-            if(button.classList.contains('flagged')){
-                    button.innerHTML=before;
-                    button.classList.remove('flagged');
-                    flagcount--
-                    flagRemoved.play();
-                    if(expMines.includes(parseInt(button.id))){
-                        flaggedMine--
-                    }
-                    //if button clicked already has a flag remove flag
-                    return;
-            }
-            else{
-                button.innerHTML='<i class="fa-solid fa-flag"></i>';
-                button.classList.add('flagged');
-                flagcount++;
-                flagAudio.play();
-                //if button clicked doesnt have flag add flag and flag class
-            }
-            if(expMines.includes(parseInt(button.id))){
-                flaggedMine++
-            }
-            console.log(flaggedMine);
-            if(flaggedMine===totalMines){
-                var interval_id = window.setInterval(()=>{}, 99999);
-                for (var i = 0; i < interval_id; i++)
-                window.clearInterval(i);
-                var sec=document.getElementById('sec').innerText;
-                var milliSec=document.getElementById('milliSec').innerText;
-                var min=document.getElementById('min').innerText;
-                document.getElementById('totale').display='block';
-                document.getElementById('totale').innerHTML='You Win! Your score:'+min+":"+sec+":"+milliSec;
-                document.getElementById('start').innerHTML='Restart';
-                winAudio.play();
-            }
-            document.getElementById('score').value=totalMines-flagcount; // print total flags left in input
-        });
-        
-    })
     document.getElementById('hint').addEventListener('click',function hints(){
         document.getElementById('hint').innerHTML=totalHints-hintCount;
         if(hintCount===totalHints){
