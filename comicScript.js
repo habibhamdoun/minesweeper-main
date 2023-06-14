@@ -26,7 +26,7 @@ function play(event) {
       document.getElementById('bigPanel').style.flexDirection = 'column';
       document.getElementById('bigPanel').style.alignItems = 'center';
       document.getElementById('bigPanel').innerHTML =
-        '<button id="backBtn1">Back...</button> <button class="levelBtns" id="easyBtn"><a href="../Easy/index.html">easy</a></button> <button class="levelBtns" id="mediumBtn"><a href="../functionality/index.html">medium</a></button> <button class="levelBtns" id="hardBtn"><a href="../hard/index.html">hard</a></button>';
+        '<button id="backBtn1">Back...</button> <button class="levelBtns" id="easyBtn"><a href="../Easy/index.html" target="_self">easy</a></button> <button class="levelBtns" id="mediumBtn"><a href="../functionality/index.html"target="_self">medium</a></button> <button class="levelBtns" id="hardBtn"><a href="../hard/index.html"target="_self">hard</a></button>';
     } else {
       document.getElementById('tutorialBtn').click();
     }
